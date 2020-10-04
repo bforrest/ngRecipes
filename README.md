@@ -30,3 +30,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 [json-server](https://www.npmjs.com/package/json-server)
 json-server db.json --routes routes.json
+
+## Recipe json schema
+
+[Recipe](https://schema.org/Recipe)
