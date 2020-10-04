@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ngRecipes"
+    }
+  },
+  "defaultProject": "ngRecipes",
+  "cli": {
+    "analytics": "736d9ebb-a280-40ca-94ad-6f7ef0c5d93d"
+  }
 }
