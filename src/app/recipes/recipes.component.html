@@ -1,2 +1,34 @@
-<h2>{{ recipe.name }}</h2>
+<h2>{{ recipe.name | uppercase }}</h2>
+
+<div>{{ recipe.name }}</div>
+<div>
+  <label
+    >name:
+    <input [(ngModel)]="recipe.prep" placeholder="prep time" />
+  </label>
+</div>
+<div>
+  <label
+    >name:
+    <input [(ngModel)]="recipe.cookTime" placeholder="cook time" />
+  </label>
+</div>
+<div>
+  <label
+    >name:
+    <input [(ngModel)]="recipe.yield" placeholder="Yield" />
+  </label>
+</div>
+<div>
+  <label
+    >name:
+    <input [(ngModel)]="recipe.description" placeholder="Description" />
+  </label>
+</div>
+<div>
+  <label
+    >name:
+    <input [(ngModel)]="recipe.recipeInstructions" placeholder="Instructions" />
+  </label>
+</div>
 <p>recipes works!</p>
