@@ -34,3 +34,12 @@ json-server db.json --routes routes.json
 ## Recipe json schema
 
 [Recipe](https://schema.org/Recipe)
+
+## Storybook
+
+To run your Storybook, type:
+
+npm run storybook
+
+For more information visit: https://storybook.js.org
+https://www.learnstorybook.com/intro-to-storybook/angular/en/get-started/
