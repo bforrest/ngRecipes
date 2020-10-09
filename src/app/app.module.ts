@@ -6,10 +6,11 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RecipesComponent } from './recipes/recipes.component';
-import { RecipeListComponent } from './recipe-list/recipe-list.component';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
+
 
 @NgModule({
-  declarations: [AppComponent, RecipesComponent, RecipeListComponent],
+  declarations: [AppComponent, RecipesComponent, RecipeDetailComponent],
   imports: [
     BrowserModule,
     FormsModule,

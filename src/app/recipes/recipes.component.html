@@ -7,14 +7,4 @@
   </li>
 </ul>
 
-<div *ngIf="selectedRecipe">
-  <h3>Ingredients</h3>
-  <h4>{{selectedRecipe.name}}</h4>
-  <li *ngFor="let item of selectedRecipe.recipeIngredient let i = index">
-   {{item}}}
-  </li>
-  <h3>Directions</h3>
-  <li *ngFor="let item of selectedRecipe.recipeInstructions let i = index">
-    {{item}}
-  </li>
-</div>
+<app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>
