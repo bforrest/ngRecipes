@@ -1,7 +1,7 @@
-export interface Ingredients {
-  calories: string;
-  fatContent: string;
-  protein: string;
-  carbs: string;
-  fiber: string;
+export interface Nutrition {
+  calories: number;
+  fatContent: number;
+  protein: number;
+  carbs: number;
+  fiber: number;
 }

@@ -1,3 +1,6 @@
+import {Ingredient} from "./ingredient";
+import {Nutrition} from './nutrition';
+
 export interface Recipe {
   id: number;
   name: string;
@@ -5,7 +8,7 @@ export interface Recipe {
   cookTime: string;
   yield: string;
   description: string;
-  recipeIngredient: Array<string>;
+  recipeIngredient: Array<Ingredient>;
   recipeInstructions: string| Array<string>;
-  // TODO: figure out nutrition
+  nutrition: Nutrition;
 }

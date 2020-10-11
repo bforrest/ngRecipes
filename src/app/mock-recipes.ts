@@ -1,4 +1,5 @@
-import { Recipe } from './recipe';
+import {Recipe} from './recipe';
+import {Unit} from "./ingredient";
 
 export const RECIPES: Recipe[] =[
   {
@@ -10,21 +11,83 @@ export const RECIPES: Recipe[] =[
     description:
       'Soup, such as ramen, is eaten for breakfast in many cultures. It’s a great way to break your fast. This tasty version will keep you nice and warm all day long!',
     recipeIngredient: [
-      '1 tablespoon toasted sesame oil',
-      '1 tablespoon coconut oil',
-      '1 (12-ounce) package fully cooked pork belly (see note), cut into ¼-inch dice',
-      '1/2 cup minced onions',
-      '2 cloves garlic',
-      '1 tablespoon red pepper flakes or 1½ teaspoons cayenne pepper',
-      '4 cups chicken bone broth, homemade (see here) or store-bought',
-      '2 tablespoons coconut aminos or wheat-free tamari',
-      '1 tablespoon coconut vinegar or unseasoned rice vinegar',
-      '1 tablespoon grated fresh ginger',
-      'Fine sea salt',
-      'Fresh ground black pepper',
-      '1 recipe Zoodles (see here), for serving',
-      '4 large eggs, soft-boiled (see here), for serving (omit for egg-free)',
-      'Sliced green onions, for garnish Red pepper flakes, for garnish',
+      {
+        name: "toasted sesame oil",
+        quantity: 1,
+        unit: Unit.Teaspoon,
+      },
+      {
+        name: "coconut oil",
+        quantity: 1,
+        unit: Unit.Tablespoon
+      },
+      {
+        name: "ully cooked pork belly",
+        quantity: 12,
+        unit: Unit.Oz
+      },
+      {
+        name: "minced onions",
+        quantity: 0.5,
+        unit: Unit.Cup
+      },
+      {
+        name: "garlic clove",
+        quantity: 2,
+        unit: Unit.Clove
+      },
+      {
+        name: "red pepper flakes",
+        quantity: 1,
+        unit: Unit.Tablespoon
+      },
+      {
+        name: "cayenne pepper",
+        quantity: 1.5,
+        unit: Unit.Teaspoon
+      },
+      {
+        name: "chicken bone broth",
+        quantity: 4,
+        unit: Unit.Cup
+
+      },
+      {
+        name: "coconut aminos or wheat-free tamari",
+        quantity: 2,
+        unit: Unit.Tablespoon
+      },
+      {
+        name: "coconut vinegar or unseasoned rice vinegar",
+        quantity: 1,
+        unit: Unit.Tablespoon
+      },
+      {
+        name: "grated fresh ginger",
+        quantity: 1,
+        unit: Unit.Tablespoon
+      },
+      {
+        name: "Fine sea salt",
+        unit: Unit.ToTaste
+      },
+      {
+        name: "fresh groung black pepper",
+        unit: Unit.ToTaste
+      },
+      {
+        name: "Zoodles",
+        quantity: 1,
+        unit: Unit.PerServing
+      },
+      {
+        name: "Large eggs, soft-boiled",
+        quantity: 4,
+        unit: Unit.Each
+      },
+      {
+        name: "sliced green onions or red pepper flakes for garnish"
+      }
     ],
     recipeInstructions:[
       'Heat the oils in a large soup pot over medium heat.",' +
@@ -35,7 +98,14 @@ export const RECIPES: Recipe[] =[
       "Simmer for 8 minutes, then add salt and pepper to taste. Just before serving, divide the zoodles among four bowls.",
       "Add the chicken broth, coconut aminos, vinegar, ginger, and tomato paste and bring to a simmer over medium-high heat.",
       "Top each bowl with 1 cup of the broth. Place a soft-boiled egg in each bowl and garnish with green onions and red pepper flakes. This dish is best served freshly made."
-      ]
+      ],
+    nutrition: {
+      calories: 495,
+      fatContent: 40,
+      protein: 24,
+      carbs: 10,
+      fiber: 4,
+    }
   },
   {
     id: 2,
@@ -46,16 +116,54 @@ export const RECIPES: Recipe[] =[
     description:
       'Soup, such as ramen, is eaten for breakfast in many cultures. It’s a great way to break your fast. This tasty version will keep you nice and warm all day long!',
     recipeIngredient: [
-      '1 tablespoon Paleo fat, for frying',
-      '1 pound 80% lean ground beef',
-      '2 1/2 teaspoons fine sea salt',
-      '1 1/2 teaspoons fresh ground black pepper',
-      '2 cups spinach or other greens of choice',
-      '4 large eggs',
-      '4 Keto English Muffins',
-      '1 tomato, cut into ¼-inch-thick slices',
-      '1/2 cup Easy Basil Hollandaise (see here)',
-      'Fresh basil leaves, for garnish'
+      {
+        name: "Paleo fat, for frying",
+        quantity: 1,
+        unit: Unit.Tablespoon
+      },
+      {
+        name: "80% lean ground beef",
+        quantity: 1,
+        unit: Unit.Pound
+      },
+      {
+        name: "fine sea salt",
+        quantity: 2.5,
+        unit: Unit.Teaspoon
+      },
+      {
+        name: "fresh ground black pepper",
+        quantity: 1.5,
+        unit: Unit.Teaspoon
+      },
+      {
+        name: "spinach of other greens of choice",
+        quantity: 2,
+        unit: Unit.Cup
+      },
+      {
+        name: "large eggs",
+        quantity: 4,
+        unit: Unit.Each
+      },
+      {
+        name: "Keto English Muffins",
+        quantity: 4,
+        unit: Unit.Each
+      },
+      {
+        name: "tomato, 1/2 inch slices",
+        quantity: 1,
+        unit: Unit.Each
+      },
+      {
+        name: "Easy Basil Hollandaise",
+        quantity: 0.5,
+        unit: Unit.Cup
+      },
+      {
+        name: "Fresh basil leaves, for garnish"
+      }
       ],
     recipeInstructions: [
       '1. Heat the Paleo fat in a cast-iron skillet over medium-high heat.',
@@ -63,6 +171,13 @@ export const RECIPES: Recipe[] =[
       '3. Remove the burgers from the pan, leaving the fat in the pan. Add the spinach, season with salt and pepper, and sauté over medium heat until the leaves are softened, about 2 minutes.',
       '4. Poach the eggs (see here).',
       '5. Serve each burger on an English muffin, fried in the leftover fat if desired. Top with a slice of tomato, one-quarter of the wilted spinach, a poached egg, and some basil hollandaise. Garnish with fresh basil. These burgers are best served fresh.'
-    ]
-}
+    ],
+    nutrition:{
+      calories: 640,
+      fatContent: 52,
+      protein: 37,
+      carbs: 5,
+      fiber: 3,
+    }
+  }
 ];

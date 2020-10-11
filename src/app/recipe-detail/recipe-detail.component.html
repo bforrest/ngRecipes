@@ -1,8 +1,13 @@
+<button (click)="goBack()">go back</button>
 <div *ngIf="recipe">
   <h3>Ingredients</h3>
   <h4>{{recipe.name}}</h4>
   <li *ngFor="let item of recipe.recipeIngredient let i = index">
-    {{item}}}
+    <span *ngIf="item?.quantity">
+      {{item.quantity}} - {{item.unit}}
+      </span>
+    {{item.name}}
+
   </li>
   <h3>Directions</h3>
   <li *ngFor="let item of recipe.recipeInstructions let i = index">
