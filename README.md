@@ -30,6 +30,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 [json-server](https://www.npmjs.com/package/json-server)
 json-server db.json --routes routes.json
+json-server --watch db.json
+json-server --watch db.json -routes routes.json --port 3004
+
 
 ## Recipe json schema
 
