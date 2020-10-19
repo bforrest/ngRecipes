@@ -46,3 +46,10 @@ npm run storybook
 
 For more information visit: https://storybook.js.org
 https://www.learnstorybook.com/intro-to-storybook/angular/en/get-started/
+
+
+npm WARN deprecated popper.js@1.16.1: You can find the new Popper v2 at @popperjs/core, this package is dedicated to the legacy v1
+npm WARN @phenomnomnominal/tsquery@3.0.0 requires a peer of typescript@^3 but none is installed. You must install peer dependencies yourself.
+npm WARN jest-preset-angular@7.1.1 requires a peer of jest@^24.1.0 but none is installed. You must install peer dependencies yourself.
+npm WARN ts-jest@24.3.0 requires a peer of jest@>=24 <25 but none is installed. You must install peer dependencies yourself.
+npm WARN @storybook/angular@6.0.26 requires a peer of typescript@^3.4.0 but none is installed. You must install peer dependencies yourself.

@@ -2,43 +2,76 @@
     "pipes": [],
     "interfaces": [
         {
-            "name": "Ingredients",
-            "id": "interface-Ingredients-ee067b07ce6692151551fed068d5cbf2",
-            "file": "src/app/nutrition.ts",
+            "name": "Ingredient",
+            "id": "interface-Ingredient-70c245a298b18a55825ad324f9c222f0",
+            "file": "src/app/ingredient.ts",
             "type": "interface",
-            "sourceCode": "export interface Ingredients {\n  calories: string;\n  fatContent: string;\n  protein: string;\n  carbs: string;\n  fiber: string;\n}\n",
+            "sourceCode": "export interface Ingredient{\n  name: string;\n  quantity?: number;\n  unit?: Unit;\n}\n\nexport enum Unit {\n  Cup =\"cup\",\n  Each= \"each\",\n  Clove = \"clove\",\n  Oz =\"Oz\",\n  Pound = \"Pound\",\n  Teaspoon = \"Teaspoon\",\n  Tablespoon = \"Tablespoon\",\n  ToTaste = \"ToTaste\",\n  PerServing = \"PerServing\"\n}\n\n",
             "properties": [
                 {
-                    "name": "calories",
+                    "name": "name",
                     "type": "string",
                     "optional": false,
                     "description": "",
                     "line": 2
                 },
                 {
+                    "name": "quantity",
+                    "type": "number",
+                    "optional": true,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "unit",
+                    "type": "Unit",
+                    "optional": true,
+                    "description": "",
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "Nutrition",
+            "id": "interface-Nutrition-a9407186b4a14b42ed30bdc6c0810fa6",
+            "file": "src/app/nutrition.ts",
+            "type": "interface",
+            "sourceCode": "export interface Nutrition {\n  calories: number;\n  fatContent: number;\n  protein: number;\n  carbs: number;\n  fiber: number;\n}\n",
+            "properties": [
+                {
+                    "name": "calories",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
                     "name": "carbs",
-                    "type": "string",
+                    "type": "number",
                     "optional": false,
                     "description": "",
                     "line": 5
                 },
                 {
                     "name": "fatContent",
-                    "type": "string",
+                    "type": "number",
                     "optional": false,
                     "description": "",
                     "line": 3
                 },
                 {
                     "name": "fiber",
-                    "type": "string",
+                    "type": "number",
                     "optional": false,
                     "description": "",
                     "line": 6
                 },
                 {
                     "name": "protein",
-                    "type": "string",
+                    "type": "number",
                     "optional": false,
                     "description": "",
                     "line": 4
@@ -50,59 +83,106 @@
         },
         {
             "name": "Recipe",
-            "id": "interface-Recipe-232d99b021894eabb3cddd90a25cdb8a",
+            "id": "interface-Recipe-5f97cc3095fa08607bc9de78d3ff2acf",
             "file": "src/app/recipe.ts",
             "type": "interface",
-            "sourceCode": "export interface Recipe {\n  name: string;\n  prep: string;\n  cookTime: string;\n  yield: string;\n  description: string;\n  recipeIngredient: Array<string>;\n  recipeInstructions: string;\n  // TODO: figure out nutrition\n}\n",
+            "sourceCode": "import {Ingredient} from \"./ingredient\";\nimport {Nutrition} from './nutrition';\n\nexport interface Recipe {\n  id: number;\n  name: string;\n  prep: string;\n  cookTime: string;\n  yield: string;\n  description: string;\n  recipeIngredient: Array<Ingredient>;\n  recipeInstructions: string| Array<string>;\n  nutrition: Nutrition;\n}\n",
             "properties": [
                 {
                     "name": "cookTime",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 4
+                    "line": 8
                 },
                 {
                     "name": "description",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 6
+                    "line": 10
+                },
+                {
+                    "name": "id",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
                 },
                 {
                     "name": "name",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 2
+                    "line": 6
+                },
+                {
+                    "name": "nutrition",
+                    "type": "Nutrition",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
                 },
                 {
                     "name": "prep",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 3
-                },
-                {
-                    "name": "recipeIngredient",
-                    "type": "Array<string>",
-                    "optional": false,
-                    "description": "",
                     "line": 7
                 },
                 {
-                    "name": "recipeInstructions",
-                    "type": "string",
+                    "name": "recipeIngredient",
+                    "type": "Array<Ingredient>",
                     "optional": false,
                     "description": "",
-                    "line": 8
+                    "line": 11
+                },
+                {
+                    "name": "recipeInstructions",
+                    "type": "string | Array<string>",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
                 },
                 {
                     "name": "yield",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 5
+                    "line": 9
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "Task",
+            "id": "interface-Task-ccb132c6b7036af26ef3c708aa49b084",
+            "file": "src/app/task/task.model.ts",
+            "type": "interface",
+            "sourceCode": "export interface Task {\n  id: string;\n  title: string;\n  state: string;\n}\n",
+            "properties": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "state",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "title",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
                 }
             ],
             "indexSignatures": [],
@@ -110,7 +190,217 @@
             "methods": []
         }
     ],
-    "injectables": [],
+    "injectables": [
+        {
+            "name": "MessageService",
+            "id": "injectable-MessageService-75c1707a4eefbc96eedb6a8d390b033f",
+            "file": "src/app/message.service.ts",
+            "properties": [
+                {
+                    "name": "messages",
+                    "defaultValue": "[]",
+                    "type": "string[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                }
+            ],
+            "methods": [
+                {
+                    "name": "add",
+                    "args": [
+                        {
+                            "name": "message",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 9,
+                    "jsdoctags": [
+                        {
+                            "name": "message",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 13
+                }
+            ],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class MessageService {\n  messages: string[] = [];\n\n  add(message: string){\n    this.messages.push(message);\n  }\n\n  clear(){\n    this.messages = [];\n  }\n  constructor() { }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 15
+            },
+            "type": "injectable"
+        },
+        {
+            "name": "RecipeService",
+            "id": "injectable-RecipeService-119b04e03ff2834d186fb1530c33974e",
+            "file": "src/app/recipe.service.ts",
+            "properties": [
+                {
+                    "name": "recipesUrl",
+                    "defaultValue": "'//localhost:3000/api/recipes'",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "getRecipe",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "number"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<Recipe>",
+                    "typeParameters": [],
+                    "line": 27,
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "number",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getRecipes",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Observable<Recipe[]>",
+                    "typeParameters": [],
+                    "line": 17
+                },
+                {
+                    "name": "handleError",
+                    "args": [
+                        {
+                            "name": "operation",
+                            "type": "string",
+                            "defaultValue": "'operation'"
+                        },
+                        {
+                            "name": "result",
+                            "type": "T",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "(error: any) => any",
+                    "typeParameters": [
+                        "T"
+                    ],
+                    "line": 48,
+                    "description": "<p>Handle Http operations that failed.\nLet the app continue;</p>\n",
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "operation",
+                            "type": "string",
+                            "defaultValue": "'operation'",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "result",
+                            "type": "T",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "log",
+                    "args": [
+                        {
+                            "name": "message",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 38,
+                    "description": "<p>Log a RecipeService message with the MessageService </p>\n",
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "message",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport {Observable, of} from \"rxjs\";\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\n\nimport { Recipe} from \"./recipe\";\nimport {RECIPES} from \"./mock-recipes\";\nimport {MessageService} from \"./message.service\";\nimport {catchError, tap} from \"rxjs/operators\";\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class RecipeService {\n\n  private recipesUrl = '//localhost:3000/api/recipes';  // URL to web api\n\n  getRecipes(): Observable<Recipe[]>{\n    this.messageService.add('RecipeService: fetch Recipes');\n\n    return this.http.get<Recipe[]>(this.recipesUrl)\n      .pipe(\n        tap(_ => this.log('fetched recipes')),\n      catchError(this.handleError<Recipe[]>('getRecipes', []))\n      );\n  }\n\n  getRecipe(id: number): Observable<Recipe>{\n    const url = `${this.recipesUrl}/${id}`;\n\n    this.messageService.add(`RecipeService: fethcing recipe id=${id}`);\n    return this.http.get<Recipe>(url).pipe(\n      tap( _ => this.log(`fetched recipe id= ${id}`)),\n      catchError(this.handleError<Recipe>(`getRecipe id=${id}`))\n    );\n  }\n\n  /** Log a RecipeService message with the MessageService */\n  private log(message: string) {\n    this.messageService.add(`RecipeService: ${message}`);\n  }\n\n  /**\n   * Handle Http operations that failed.\n   * Let the app continue;\n   * @param http\n   * @param messageService\n   */\n  private handleError<T>(operation = 'operation', result ?: T){\n    return(error: any): Observable<T> => {\n      // TODO: send error to remote logging.\n      console.error(error);\n\n      // TODO: transform error for user.\n      this.log(`${operation} failed: ${error.messaGge}`);\n\n      // Let the app keep running by returning an empty result.\n      return of(result as T);\n    }\n  }\n\n  constructor(\n    private http: HttpClient,\n    private messageService: MessageService) { }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient"
+                    },
+                    {
+                        "name": "messageService",
+                        "type": "MessageService"
+                    }
+                ],
+                "line": 59,
+                "jsdoctags": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "messageService",
+                        "type": "MessageService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        }
+    ],
     "classes": [
         {
             "name": "AppPage",
@@ -148,7 +438,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-f655c803835a96e8efdfa2d279a8f986",
+            "id": "component-AppComponent-745928435ce703570b06da097196f44e",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -169,7 +459,7 @@
             "propertiesClass": [
                 {
                     "name": "title",
-                    "defaultValue": "'ngRecipes'",
+                    "defaultValue": "'ng Recipes'",
                     "type": "string",
                     "optional": false,
                     "description": "",
@@ -182,16 +472,16 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.css'],\n})\nexport class AppComponent {\n  title = 'ngRecipes';\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.css'],\n})\nexport class AppComponent {\n  title = 'ng Recipes';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": "/* AppComponent's private CSS styles */\nh1 {\n  font-size: 1.2em;\n  margin-bottom: 0;\n}\nh2 {\n  font-size: 2em;\n  margin-top: 0;\n  padding-top: 0;\n}\nnav a {\n  padding: 5px 10px;\n  text-decoration: none;\n  margin-top: 10px;\n  display: inline-block;\n  background-color: #eee;\n  border-radius: 4px;\n}\nnav a:visited, a:link {\n  color: #334953;\n}\nnav a:hover {\n  color: #039be5;\n  background-color: #cfd8dc;\n}\nnav a.active {\n  color: #039be5;\n}\n",
                     "styleUrl": "./app.component.css"
                 }
             ],
             "stylesData": "",
-            "templateData": "<h1>{{ title }}</h1>\n<router-outlet></router-outlet>\n"
+            "templateData": "<h1>{{ title }}</h1>\n<nav>\n  <a routerLink=\"/dashboard\">Dashboard</a>\n  <a routerLink=\"/recipes\">Recipes</a>\n</nav>\n<router-outlet></router-outlet>\n<app-recipe-editor></app-recipe-editor>\n<app-messages></app-messages>\n"
         },
         {
             "name": "ButtonComponent",
@@ -275,6 +565,121 @@
             }
         },
         {
+            "name": "DashboardComponent",
+            "id": "component-DashboardComponent-bf9a0cb5eb61607dadd6efd5f37114dd",
+            "file": "src/app/dashboard/dashboard.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-dashboard",
+            "styleUrls": [
+                "./dashboard.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./dashboard.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "recipes",
+                    "type": "Recipe[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "selectedRecipe",
+                    "type": "Recipe",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getRecipes",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23
+                },
+                {
+                    "name": "onSelect",
+                    "args": [
+                        {
+                            "name": "recipe",
+                            "type": "Recipe"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 19,
+                    "jsdoctags": [
+                        {
+                            "name": "recipe",
+                            "type": "Recipe",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport {Recipe} from \"../recipe\";\nimport {RecipeService} from \"../recipe.service\";\n\n@Component({\n  selector: 'app-dashboard',\n  templateUrl: './dashboard.component.html',\n  styleUrls: ['./dashboard.component.css']\n})\nexport class DashboardComponent implements OnInit {\n  recipes: Recipe[];\n\n  selectedRecipe: Recipe;\n\n  getRecipes(): void {\n    this.recipeService.getRecipes()\n      .subscribe( result => this.recipes = result.slice(0,3))\n  }\n  onSelect(recipe: Recipe): void{\n    this.selectedRecipe = recipe;\n  }\n  constructor(private recipeService: RecipeService) {}\n  ngOnInit(): void {\n    this.getRecipes();\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "/* DashboardComponent's private CSS styles */\n[class*='col-'] {\n  float: left;\n  padding-right: 20px;\n  padding-bottom: 20px;\n}\n[class*='col-']:last-of-type {\n  padding-right: 0;\n}\na {\n  text-decoration: none;\n}\n*, *:after, *:before {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\nh3 {\n  text-align: center;\n  margin-bottom: 0;\n}\nh4 {\n  position: relative;\n}\n.grid {\n  margin: 0;\n}\n.col-1-4 {\n  width: 25%;\n}\n.module {\n  padding: 20px;\n  text-align: center;\n  color: #eee;\n  max-height: 120px;\n  min-width: 120px;\n  background-color: #3f525c;\n  border-radius: 2px;\n}\n.module:hover {\n  background-color: #eee;\n  cursor: pointer;\n  color: #607d8b;\n}\n.grid-pad {\n  padding: 10px 0;\n}\n.grid-pad > [class*='col-']:last-of-type {\n  padding-right: 20px;\n}\n@media (max-width: 600px) {\n  .module {\n    font-size: 10px;\n    max-height: 75px; }\n}\n@media (max-width: 1024px) {\n  .grid {\n    margin: 0;\n  }\n  .module {\n    min-width: 60px;\n  }\n}\n",
+                    "styleUrl": "./dashboard.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "recipeService",
+                        "type": "RecipeService"
+                    }
+                ],
+                "line": 21,
+                "jsdoctags": [
+                    {
+                        "name": "recipeService",
+                        "type": "RecipeService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<h3>Top Recipes</h3>\n<div class=\"grid grid-pad\">\n  <a *ngFor=\"let recipe of recipes\" class=\"col-1-4\"\n     routerLink=\"/detail/{{recipe.id}}\">\n    <div class=\"module hero\">\n      <h4>{{recipe.name}}</h4>\n    </div>\n  </a>\n</div>\n"
+        },
+        {
             "name": "HeaderComponent",
             "id": "component-HeaderComponent-246e2a69dc126a3bd76c6328dd3b93e2",
             "file": "src/stories/header.component.ts",
@@ -335,6 +740,87 @@
                 }
             ],
             "stylesData": ""
+        },
+        {
+            "name": "MessagesComponent",
+            "id": "component-MessagesComponent-103c49a00d2b29135918565672ba6057",
+            "file": "src/app/messages/messages.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-messages",
+            "styleUrls": [
+                "./messages.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./messages.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "messageService",
+                    "type": "MessageService",
+                    "optional": false,
+                    "description": "",
+                    "line": 11,
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 13
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport {MessageService} from \"../message.service\";\n\n@Component({\n  selector: 'app-messages',\n  templateUrl: './messages.component.html',\n  styleUrls: ['./messages.component.css']\n})\nexport class MessagesComponent implements OnInit {\n\n  constructor(public messageService: MessageService) { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "/* MessagesComponent's private CSS styles */\nh2 {\n  color: red;\n  font-family: Arial, Helvetica, sans-serif;\n  font-weight: lighter;\n}\nbody {\n  margin: 2em;\n}\nbody, input[text], button {\n  color: crimson;\n  font-family: Cambria, Georgia;\n}\n\nbutton.clear {\n  font-family: Arial;\n  background-color: #eee;\n  border: none;\n  padding: 5px 10px;\n  border-radius: 4px;\n  cursor: pointer;\n  cursor: hand;\n}\nbutton:hover {\n  background-color: #cfd8dc;\n}\nbutton:disabled {\n  background-color: #eee;\n  color: #aaa;\n  cursor: auto;\n}\nbutton.clear {\n  color: #333;\n  margin-bottom: 12px;\n}\n\n\n/*\nCopyright Google LLC. All Rights Reserved.\nUse of this source code is governed by an MIT-style license that\ncan be found in the LICENSE file at http://angular.io/license\n*/\n",
+                    "styleUrl": "./messages.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "messageService",
+                        "type": "MessageService"
+                    }
+                ],
+                "line": 9,
+                "jsdoctags": [
+                    {
+                        "name": "messageService",
+                        "type": "MessageService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div *ngIf=\"messageService.messages.length\">\n\n  <h2>Messages</h2>\n  <button class=\"clear\"\n          (click)=\"messageService.clear()\">clear</button>\n  <div *ngFor='let message of messageService.messages'> {{message}} </div>\n\n</div>\n"
         },
         {
             "name": "PageComponent",
@@ -399,8 +885,180 @@
             "stylesData": ""
         },
         {
+            "name": "RecipeDetailComponent",
+            "id": "component-RecipeDetailComponent-d3ed9db5b23dd12d86eb54c5ca0db328",
+            "file": "src/app/recipe-detail/recipe-detail.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-recipe-detail",
+            "styleUrls": [
+                "./recipe-detail.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./recipe-detail.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "recipe",
+                    "line": 16,
+                    "type": "Recipe"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "getRecipe",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32
+                },
+                {
+                    "name": "goBack",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, Input } from '@angular/core';\nimport {Recipe} from \"../recipe\";\nimport { ActivatedRoute } from '@angular/router';\nimport { Location } from '@angular/common';\nimport {RecipeService} from \"../recipe.service\";\n\n@Component({\n  selector: 'app-recipe-detail',\n  templateUrl: './recipe-detail.component.html',\n  styleUrls: ['./recipe-detail.component.css']\n})\n\nexport class RecipeDetailComponent implements OnInit {\n\n  // decorator to make the property available for binding.\n  @Input() recipe: Recipe;\n\n  constructor(\n    private route: ActivatedRoute,\n    private recipeService: RecipeService,\n    private location: Location) {\n  }\n\n  goBack(): void {\n    this.location.back();\n  }\n\n  ngOnInit(): void {\n    this.getRecipe();\n  }\n\n  getRecipe(): void {\n    const id = +this.route.snapshot.paramMap.get('id');\n    this.recipeService.getRecipe(id)\n      .subscribe(result => this.recipe = result);\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "/* HeroDetailComponent's private CSS styles */\nlabel {\n  display: inline-block;\n  width: 3em;\n  margin: .5em 0;\n  color: #607D8B;\n  font-weight: bold;\n}\ninput {\n  height: 2em;\n  font-size: 1em;\n  padding-left: .4em;\n}\nbutton {\n  margin-top: 20px;\n  font-family: Arial;\n  background-color: #eee;\n  border: none;\n  padding: 5px 10px;\n  border-radius: 4px;\n  cursor: pointer;\n}\nbutton:hover {\n  background-color: #cfd8dc;\n}\nbutton:disabled {\n  background-color: #eee;\n  color: #ccc;\n  cursor: auto;\n}\n\nli {\n  list-style-type: none;\n}\n",
+                    "styleUrl": "./recipe-detail.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "route",
+                        "type": "ActivatedRoute"
+                    },
+                    {
+                        "name": "recipeService",
+                        "type": "RecipeService"
+                    },
+                    {
+                        "name": "location",
+                        "type": "Location"
+                    }
+                ],
+                "line": 16,
+                "jsdoctags": [
+                    {
+                        "name": "route",
+                        "type": "ActivatedRoute",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "recipeService",
+                        "type": "RecipeService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "location",
+                        "type": "Location",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<button (click)=\"goBack()\">go back</button>\n<div *ngIf=\"recipe\">\n  <h3>Ingredients</h3>\n  <h4>{{recipe.name}}</h4>\n  <li *ngFor=\"let item of recipe.recipeIngredient let i = index\">\n    <span *ngIf=\"item?.quantity\">\n      {{item.quantity}} - {{item.unit}}\n      </span>\n    {{item.name}}\n\n  </li>\n  <h3>Directions</h3>\n  <li *ngFor=\"let item of recipe.recipeInstructions let i = index\">\n    {{item}}\n  </li>\n</div>\n<button (click)=\"goBack()\">go back</button>\n"
+        },
+        {
+            "name": "RecipeEditorComponent",
+            "id": "component-RecipeEditorComponent-a48411fe71c9151c49585c804116018d",
+            "file": "src/app/recipe-editor/recipe-editor.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-recipe-editor",
+            "styleUrls": [
+                "./recipe-editor.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./recipe-editor.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormBuilder } from '@angular/forms';\nimport { Validators } from '@angular/forms';\nimport { FormArray } from '@angular/forms';\n\n@Component({\n  selector: 'app-recipe-editor',\n  templateUrl: './recipe-editor.component.html',\n  styleUrls: ['./recipe-editor.component.css']\n})\nexport class RecipeEditorComponent {\n  // recipeForm = this.fb.group({\n  //   name: ['', Validators.required],\n  //   prep: ['', Validators.required],\n  //   cookTime: [''],\n  //   yield: ['', Validators.required],\n  //   description: [''],\n  //   recipeIngredient: this.fb.group({\n  //\n  //   }),\n  //   nutrition:\n  // })\n\n\n  // updateRecipe(){\n  //   this.recipeForm.patchValue({\n  //     firstName: 'Nancy',\n  //     address: {\n  //       street: '123 Drew Street'\n  //     }\n  //   });\n  // }\n  constructor(private fb: FormBuilder) { }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./recipe-editor.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder"
+                    }
+                ],
+                "line": 11,
+                "jsdoctags": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "templateData": "<!--&lt;!&ndash;<form [formGroup]=\"recipeForm\" (ngSubmit)=\"onSubmit()\">&ndash;&gt;-->\n<!--<form>-->\n<!--  <label>-->\n<!--    First Name:-->\n<!--    <input type=\"text\" formControlName=\"firstName\" required>-->\n<!--  </label>-->\n\n<!--  <label>-->\n<!--    Last Name:-->\n<!--    <input type=\"text\" formControlName=\"lastName\">-->\n<!--  </label>-->\n\n<!--  <div formGroupName=\"address\">-->\n<!--    <h3>Address</h3>-->\n\n<!--    <label>-->\n<!--      Street:-->\n<!--      <input type=\"text\" formControlName=\"street\">-->\n<!--    </label>-->\n\n<!--    <label>-->\n<!--      City:-->\n<!--      <input type=\"text\" formControlName=\"city\">-->\n<!--    </label>-->\n\n<!--    <label>-->\n<!--      State:-->\n<!--      <input type=\"text\" formControlName=\"state\">-->\n<!--    </label>-->\n\n<!--    <label>-->\n<!--      Zip Code:-->\n<!--      <input type=\"text\" formControlName=\"zip\">-->\n<!--    </label>-->\n<!--  </div>-->\n\n<!--  <div formArrayName=\"aliases\">-->\n<!--    <h3>Aliases</h3> <button (click)=\"addAlias()\">Add Alias</button>-->\n\n<!--    <div *ngFor=\"let alias of aliases.controls; let i=index\">-->\n<!--      &lt;!&ndash; The repeated alias template &ndash;&gt;-->\n<!--      <label>-->\n<!--        Alias:-->\n<!--        <input type=\"text\" [formControlName]=\"i\">-->\n<!--      </label>-->\n<!--    </div>-->\n<!--  </div>-->\n\n<!--  <button type=\"submit\" [disabled]=\"!recipeForm.valid\">Submit</button>-->\n<!--</form>-->\n\n<!--<hr>-->\n\n\n<!--<p>-->\n<!--&lt;!&ndash;  Form Value: {{ recipeForm.value | json }}&ndash;&gt;-->\n<!--</p>-->\n\n\n<!--<p>-->\n<!--&lt;!&ndash;  Form Status: {{ recipeForm.status }}&ndash;&gt;-->\n<!--</p>-->\n\n<!--<p>-->\n<!--&lt;!&ndash;  <button (click)=\"updateRecipe()\">Update Profile</button>&ndash;&gt;-->\n<!--</p>-->\n\n\n<!--&lt;!&ndash;-->\n<!--Copyright Google LLC. All Rights Reserved.-->\n<!--Use of this source code is governed by an MIT-style license that-->\n<!--can be found in the LICENSE file at http://angular.io/license-->\n<!--&ndash;&gt;-->\n"
+        },
+        {
             "name": "RecipesComponent",
-            "id": "component-RecipesComponent-c8e51cadbbd8c692d44a285ba84e0d33",
+            "id": "component-RecipesComponent-1f1f687e055509cfae76d33e19356462",
             "file": "src/app/recipes/recipes.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -420,12 +1078,116 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "recipe",
-                    "defaultValue": "{\n    name: 'bacon and eggs ramen',\n    prep: '5 minutes',\n    cookTime: '20 minutes (not counting Zoodle and soft-boiled eggs)',\n    yield: '4 servings',\n    description:\n      'Soup, such as ramen, is eaten for breakfast in many cultures. It’s a great way to break your fast. This tasty version will keep you nice and warm all day long!',\n    recipeIngredient: [\n      '1 tablespoon toasted sesame oil',\n      '1 tablespoon coconut oil',\n      '1 (12-ounce) package fully cooked pork belly (see note), cut into ¼-inch dice',\n      '½ cup minced onions',\n      '2 cloves garlic',\n      '1 tablespoon red pepper flakes or 1½ teaspoons cayenne pepper',\n      '4 cups chicken bone broth, homemade (see here) or store-bought',\n      '2 tablespoons coconut aminos or wheat-free tamari',\n      '1 tablespoon coconut vinegar or unseasoned rice vinegar',\n      '1 tablespoon grated fresh ginger',\n      'Fine sea salt',\n      'Fresh ground black pepper',\n      '1 recipe Zoodles (see here), for serving',\n      '4 large eggs, soft-boiled (see here), for serving (omit for egg-free)',\n      'Sliced green onions, for garnish Red pepper flakes, for garnish',\n    ],\n    recipeInstructions:\n      'Heat the oils in a large soup pot over medium heat. Fry the pork belly in the hot oil until crisp on all sides, about 4 minutes per side. Remove the pork belly from the pot with a slotted spoon, leaving the fat in the pot. Add the onions, garlic, and red pepper flakes and cook over low heat for 4 minutes, or until the onions are translucent. Add the chicken broth, coconut aminos, vinegar, ginger, and tomato paste and bring to a simmer over medium-high heat. Simmer for 8 minutes, then add salt and pepper to taste. Just before serving, divide the zoodles among four bowls. Top each bowl with 1 cup of the broth. Place a soft-boiled egg in each bowl and garnish with green onions and red pepper flakes. This dish is best served freshly made.',\n  }",
-                    "type": "Recipe",
+                    "name": "recipes",
+                    "type": "Recipe[]",
                     "optional": false,
                     "description": "",
-                    "line": 10
+                    "line": 12
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getRecipes",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 14
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 19
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import {Component, Input, OnInit} from '@angular/core';\nimport {Recipe } from '../recipe';\nimport { RECIPES } from '../mock-recipes';\nimport {RecipeService} from \"../recipe.service\";\n\n@Component({\n  selector: 'app-recipes',\n  templateUrl: './recipes.component.html',\n  styleUrls: ['./recipes.component.css'],\n})\nexport class RecipesComponent implements OnInit {\n  recipes: Recipe[];\n\n  getRecipes(): void {\n    this.recipeService.getRecipes().subscribe( result => this.recipes = result)\n  }\n\n  constructor(private recipeService: RecipeService) {}\n  ngOnInit(): void {\n    this.getRecipes();\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "/* HeroesComponent's private CSS styles */\n.heroes {\n  margin: 0 0 2em 0;\n  list-style-type: none;\n  padding: 0;\n  width: 15em;\n}\n.heroes li {\n  position: relative;\n  cursor: pointer;\n  background-color: #EEE;\n  margin: .5em;\n  padding: .3em 0;\n  height: 1.6em;\n  border-radius: 4px;\n}\n\n.heroes li:hover {\n  color: #607D8B;\n  background-color: #DDD;\n  left: .1em;\n}\n\n.heroes a {\n  color: #333;\n  text-decoration: none;\n  position: relative;\n  display: block;\n  width: 250px;\n}\n\n.heroes a:hover {\n  color:#607D8B;\n}\n\n.heroes .badge {\n  display: inline-block;\n  font-size: small;\n  color: white;\n  padding: 0.8em 0.7em 0 0.7em;\n  background-color:#405061;\n  line-height: 1em;\n  position: relative;\n  left: -1px;\n  top: -4px;\n  height: 1.8em;\n  min-width: 16px;\n  text-align: right;\n  margin-right: .8em;\n  border-radius: 4px 0 0 4px;\n}\n",
+                    "styleUrl": "./recipes.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "recipeService",
+                        "type": "RecipeService"
+                    }
+                ],
+                "line": 16,
+                "jsdoctags": [
+                    {
+                        "name": "recipeService",
+                        "type": "RecipeService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<h2>My Recipes</h2>\n<ul class=\"heroes\">\n  <li *ngFor=\"let recipe of recipes\"\n      [class.selected]=\"recipe === selectedRecipe\"\n      (click)=\"onSelect(recipe)\">\n    <a routerLink=\"/detail/{{recipe.id}}\">\n      <span class=\"badge\">{{recipe.id}}</span> {{recipe.name}}\n    </a>\n  </li>\n</ul>\n\n"
+        },
+        {
+            "name": "TaskComponent",
+            "id": "component-TaskComponent-7b2214424750b60ff52baff0eff2790f",
+            "file": "src/app/task/task.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-task",
+            "styleUrls": [
+                "./task.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./task.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "task",
+                    "line": 13,
+                    "type": "Task"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onArchiveTask",
+                    "defaultValue": "new EventEmitter()",
+                    "line": 19,
+                    "type": "EventEmitter<any>"
+                },
+                {
+                    "name": "onPinTask",
+                    "defaultValue": "new EventEmitter()",
+                    "line": 16,
+                    "type": "EventEmitter<any>"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "title",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
                 }
             ],
             "methodsClass": [
@@ -435,7 +1197,51 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 39
+                    "line": 22
+                },
+                {
+                    "name": "onArchive",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onPin",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24,
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 }
             ],
             "hostBindings": [],
@@ -443,12 +1249,12 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Recipe } from '../recipe';\n\n@Component({\n  selector: 'app-recipes',\n  templateUrl: './recipes.component.html',\n  styleUrls: ['./recipes.component.css'],\n})\nexport class RecipesComponent implements OnInit {\n  recipe: Recipe = {\n    name: 'bacon and eggs ramen',\n    prep: '5 minutes',\n    cookTime: '20 minutes (not counting Zoodle and soft-boiled eggs)',\n    yield: '4 servings',\n    description:\n      'Soup, such as ramen, is eaten for breakfast in many cultures. It’s a great way to break your fast. This tasty version will keep you nice and warm all day long!',\n    recipeIngredient: [\n      '1 tablespoon toasted sesame oil',\n      '1 tablespoon coconut oil',\n      '1 (12-ounce) package fully cooked pork belly (see note), cut into ¼-inch dice',\n      '½ cup minced onions',\n      '2 cloves garlic',\n      '1 tablespoon red pepper flakes or 1½ teaspoons cayenne pepper',\n      '4 cups chicken bone broth, homemade (see here) or store-bought',\n      '2 tablespoons coconut aminos or wheat-free tamari',\n      '1 tablespoon coconut vinegar or unseasoned rice vinegar',\n      '1 tablespoon grated fresh ginger',\n      'Fine sea salt',\n      'Fresh ground black pepper',\n      '1 recipe Zoodles (see here), for serving',\n      '4 large eggs, soft-boiled (see here), for serving (omit for egg-free)',\n      'Sliced green onions, for garnish Red pepper flakes, for garnish',\n    ],\n    recipeInstructions:\n      'Heat the oils in a large soup pot over medium heat. Fry the pork belly in the hot oil until crisp on all sides, about 4 minutes per side. Remove the pork belly from the pot with a slotted spoon, leaving the fat in the pot. Add the onions, garlic, and red pepper flakes and cook over low heat for 4 minutes, or until the onions are translucent. Add the chicken broth, coconut aminos, vinegar, ginger, and tomato paste and bring to a simmer over medium-high heat. Simmer for 8 minutes, then add salt and pepper to taste. Just before serving, divide the zoodles among four bowls. Top each bowl with 1 cup of the broth. Place a soft-boiled egg in each bowl and garnish with green onions and red pepper flakes. This dish is best served freshly made.',\n  };\n  constructor() {}\n\n  ngOnInit(): void {}\n}\n",
+            "sourceCode": "import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';\nimport { Task } from './task.model';\n\n@Component({\n  selector: 'app-task',\n  templateUrl: './task.component.html',\n  styleUrls: ['./task.component.css']\n})\n\nexport class TaskComponent implements OnInit {\n\n  title: string;\n  @Input() task: Task;\n\n  // tslint:disable-next-line: no-output-on-prefix\n  @Output() onPinTask: EventEmitter<any> = new EventEmitter();\n\n  // tslint:disable-next-line: no-output-on-prefix\n  @Output() onArchiveTask: EventEmitter<any> = new EventEmitter();\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n  onPin(id: any) {\n    this.onPinTask.emit(id);\n  }\n  onArchive(id: any) {\n    this.onArchiveTask.emit(id);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
                     "data": "",
-                    "styleUrl": "./recipes.component.css"
+                    "styleUrl": "./task.component.css"
                 }
             ],
             "stylesData": "",
@@ -456,12 +1262,12 @@
                 "name": "constructor",
                 "description": "",
                 "args": [],
-                "line": 36
+                "line": 19
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<h2>{{ recipe.name | uppercase }}</h2>\n\n<div>{{ recipe.name }}</div>\n<div>\n  <label\n    >name:\n    <input [(ngModel)]=\"recipe.prep\" placeholder=\"prep time\" />\n  </label>\n</div>\n<div>\n  <label\n    >name:\n    <input [(ngModel)]=\"recipe.cookTime\" placeholder=\"cook time\" />\n  </label>\n</div>\n<div>\n  <label\n    >name:\n    <input [(ngModel)]=\"recipe.yield\" placeholder=\"Yield\" />\n  </label>\n</div>\n<div>\n  <label\n    >name:\n    <input [(ngModel)]=\"recipe.description\" placeholder=\"Description\" />\n  </label>\n</div>\n<div>\n  <label\n    >name:\n    <input [(ngModel)]=\"recipe.recipeInstructions\" placeholder=\"Instructions\" />\n  </label>\n</div>\n<p>recipes works!</p>\n"
+            "templateData": "<div class=\"list-item {{ task?.state }}\">\n  <label class=\"checkbox\">\n    <input\n      type=\"checkbox\"\n      [defaultChecked]=\"task?.state === 'TASK_ARCHIVED'\"\n      disabled=\"true\"\n      name=\"checked\"\n    />\n    <span class=\"checkbox-custom\" (click)=\"onArchive(task.id)\"></span>\n  </label>\n  <div class=\"title\">\n    <input type=\"text\" [value]=\"task?.title\" readonly=\"true\" placeholder=\"Input title\" />\n  </div>\n  <div class=\"actions\">\n    <a *ngIf=\"task?.state !== 'TASK_ARCHIVED'\" (click)=\"onPin(task.id)\">\n      <span class=\"icon-star\"></span>\n    </a>\n  </div>\n</div>\n"
         }
     ],
     "modules": [
@@ -479,7 +1285,22 @@
                             "name": "AppComponent"
                         },
                         {
+                            "name": "DashboardComponent"
+                        },
+                        {
+                            "name": "MessagesComponent"
+                        },
+                        {
+                            "name": "RecipeDetailComponent"
+                        },
+                        {
+                            "name": "RecipeEditorComponent"
+                        },
+                        {
                             "name": "RecipesComponent"
+                        },
+                        {
+                            "name": "TaskComponent"
                         }
                     ]
                 },
@@ -542,12 +1363,36 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "actionsData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/task/task.stories.ts",
+                "type": "object",
+                "defaultValue": "{\n  onPinTask: action('onPinTask'),\n  onArchiveTask: action('OnArchiveTask'),\n}"
+            },
+            {
+                "name": "Archived",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/task/task.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  component: TaskComponent,\n  props: {\n    task: {\n      ...taskData,\n      state: 'TASK_ARCHIVED',\n    },\n    onPinTask: actionsData.onPinTask,\n    onArchiveTask: actionsData.onArchiveTask,\n  },\n})"
+            },
+            {
                 "name": "context",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/test.ts",
                 "type": "",
                 "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/task/task.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  component: TaskComponent,\n  props: {\n    taks: taskData,\n    onPinTask: actionsData.onPinTask,\n    onArchiveTask: actionsData.onArchiveTask\n  }\n})"
             },
             {
                 "name": "environment",
@@ -577,7 +1422,7 @@
                 "name": "LoggedIn",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Page.stories.ts",
+                "file": "src/stories/Header.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -585,14 +1430,6 @@
                 "name": "LoggedIn",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Header.stories.ts",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "LoggedOut",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/stories/Page.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
@@ -602,6 +1439,14 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/stories/Header.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedOut",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Page.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
             },
@@ -614,12 +1459,28 @@
                 "defaultValue": "() => {\n  let storage = {};\n  return {\n    getItem: (key) => (key in storage ? storage[key] : null),\n    setItem: (key, value) => (storage[key] = value || ''),\n    removeItem: (key) => delete storage[key],\n    clear: () => (storage = {}),\n  };\n}"
             },
             {
+                "name": "Pinned",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/task/task.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  component: TaskComponent,\n  props: {\n    task: {\n      ...taskData,\n      state: 'TASK_PINNED',\n    },\n    onPinTask: actionsData.onPinTask,\n    onArchiveTask: actionsData.onArchiveTask,\n  }\n})"
+            },
+            {
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/stories/Button.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "RECIPES",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/mock-recipes.ts",
+                "type": "Recipe[]",
+                "defaultValue": "[\n  {\n    id: 1,\n    name: 'bacon and eggs ramen',\n    prep: '5 minutes',\n    cookTime: '20 minutes (not counting Zoodle and soft-boiled eggs)',\n    yield: '4 servings',\n    description:\n      'Soup, such as ramen, is eaten for breakfast in many cultures. It’s a great way to break your fast. This tasty version will keep you nice and warm all day long!',\n    recipeIngredient: [\n      {\n        name: \"toasted sesame oil\",\n        quantity: 1,\n        unit: Unit.Teaspoon,\n      },\n      {\n        name: \"coconut oil\",\n        quantity: 1,\n        unit: Unit.Tablespoon\n      },\n      {\n        name: \"ully cooked pork belly\",\n        quantity: 12,\n        unit: Unit.Oz\n      },\n      {\n        name: \"minced onions\",\n        quantity: 0.5,\n        unit: Unit.Cup\n      },\n      {\n        name: \"garlic clove\",\n        quantity: 2,\n        unit: Unit.Clove\n      },\n      {\n        name: \"red pepper flakes\",\n        quantity: 1,\n        unit: Unit.Tablespoon\n      },\n      {\n        name: \"cayenne pepper\",\n        quantity: 1.5,\n        unit: Unit.Teaspoon\n      },\n      {\n        name: \"chicken bone broth\",\n        quantity: 4,\n        unit: Unit.Cup\n\n      },\n      {\n        name: \"coconut aminos or wheat-free tamari\",\n        quantity: 2,\n        unit: Unit.Tablespoon\n      },\n      {\n        name: \"coconut vinegar or unseasoned rice vinegar\",\n        quantity: 1,\n        unit: Unit.Tablespoon\n      },\n      {\n        name: \"grated fresh ginger\",\n        quantity: 1,\n        unit: Unit.Tablespoon\n      },\n      {\n        name: \"Fine sea salt\",\n        unit: Unit.ToTaste\n      },\n      {\n        name: \"fresh groung black pepper\",\n        unit: Unit.ToTaste\n      },\n      {\n        name: \"Zoodles\",\n        quantity: 1,\n        unit: Unit.PerServing\n      },\n      {\n        name: \"Large eggs, soft-boiled\",\n        quantity: 4,\n        unit: Unit.Each\n      },\n      {\n        name: \"sliced green onions or red pepper flakes for garnish\"\n      }\n    ],\n    recipeInstructions:[\n      'Heat the oils in a large soup pot over medium heat.\",' +\n      \"Fry the pork belly in the hot oil until crisp on all sides, about 4 minutes per side.\",\n      \"Remove the pork belly from the pot with a slotted spoon, leaving the fat in the pot.\",\n      \"Add the onions, garlic, and red pepper flakes and cook over low heat for 4 minutes, or until the onions are translucent.\",\n      \"Add the chicken broth, coconut aminos, vinegar, ginger, and tomato paste and bring to a simmer over medium-high heat.\",\n      \"Simmer for 8 minutes, then add salt and pepper to taste. Just before serving, divide the zoodles among four bowls.\",\n      \"Add the chicken broth, coconut aminos, vinegar, ginger, and tomato paste and bring to a simmer over medium-high heat.\",\n      \"Top each bowl with 1 cup of the broth. Place a soft-boiled egg in each bowl and garnish with green onions and red pepper flakes. This dish is best served freshly made.\"\n      ],\n    nutrition: {\n      calories: 495,\n      fatContent: 40,\n      protein: 24,\n      carbs: 10,\n      fiber: 4,\n    }\n  },\n  {\n    id: 2,\n    name: 'florentine breakfast burgers',\n    prep: '5 minutes',\n    cookTime: '20 minutes (not counting english muffins)',\n    yield: '4 servings',\n    description:\n      'Soup, such as ramen, is eaten for breakfast in many cultures. It’s a great way to break your fast. This tasty version will keep you nice and warm all day long!',\n    recipeIngredient: [\n      {\n        name: \"Paleo fat, for frying\",\n        quantity: 1,\n        unit: Unit.Tablespoon\n      },\n      {\n        name: \"80% lean ground beef\",\n        quantity: 1,\n        unit: Unit.Pound\n      },\n      {\n        name: \"fine sea salt\",\n        quantity: 2.5,\n        unit: Unit.Teaspoon\n      },\n      {\n        name: \"fresh ground black pepper\",\n        quantity: 1.5,\n        unit: Unit.Teaspoon\n      },\n      {\n        name: \"spinach of other greens of choice\",\n        quantity: 2,\n        unit: Unit.Cup\n      },\n      {\n        name: \"large eggs\",\n        quantity: 4,\n        unit: Unit.Each\n      },\n      {\n        name: \"Keto English Muffins\",\n        quantity: 4,\n        unit: Unit.Each\n      },\n      {\n        name: \"tomato, 1/2 inch slices\",\n        quantity: 1,\n        unit: Unit.Each\n      },\n      {\n        name: \"Easy Basil Hollandaise\",\n        quantity: 0.5,\n        unit: Unit.Cup\n      },\n      {\n        name: \"Fresh basil leaves, for garnish\"\n      }\n      ],\n    recipeInstructions: [\n      '1. Heat the Paleo fat in a cast-iron skillet over medium-high heat.',\n      '2. Using your hands, form the meat into 4 patties. Season the outsides with the salt and pepper. Fry the burgers in the pan on both sides until they reach your desired doneness (see the chart below).',\n      '3. Remove the burgers from the pan, leaving the fat in the pan. Add the spinach, season with salt and pepper, and sauté over medium heat until the leaves are softened, about 2 minutes.',\n      '4. Poach the eggs (see here).',\n      '5. Serve each burger on an English muffin, fried in the leftover fat if desired. Top with a slice of tomato, one-quarter of the wilted spinach, a poached egg, and some basil hollandaise. Garnish with fresh basil. These burgers are best served fresh.'\n    ],\n    nutrition:{\n      calories: 640,\n      fatContent: 52,\n      protein: 37,\n      carbs: 5,\n      fiber: 3,\n    }\n  }\n]"
             },
             {
                 "name": "require",
@@ -645,6 +1506,14 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "taskData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/task/task.stories.ts",
+                "type": "object",
+                "defaultValue": "{\n  id: '1',\n  title: 'Test Task',\n  state: 'Task_INBOX',\n  updated_at: new Date(2019, 0, 1, 8, 0),\n}"
+            },
+            {
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -656,23 +1525,111 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Page.stories.ts",
-                "type": "Story<Page>",
-                "defaultValue": "(args: Page) => ({\n  component: Page,\n  props: args,\n})"
+                "file": "src/stories/Header.stories.ts",
+                "type": "Story<Header>",
+                "defaultValue": "(args: Header) => ({\n  component: Header,\n  props: args,\n})"
             },
             {
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/Header.stories.ts",
-                "type": "Story<Header>",
-                "defaultValue": "(args: Header) => ({\n  component: Header,\n  props: args,\n})"
+                "file": "src/stories/Page.stories.ts",
+                "type": "Story<Page>",
+                "defaultValue": "(args: Page) => ({\n  component: Page,\n  props: args,\n})"
             }
         ],
         "functions": [],
         "typealiases": [],
-        "enumerations": [],
+        "enumerations": [
+            {
+                "name": "Unit",
+                "childs": [
+                    {
+                        "name": "Cup",
+                        "value": "cup"
+                    },
+                    {
+                        "name": "Each",
+                        "value": "each"
+                    },
+                    {
+                        "name": "Clove",
+                        "value": "clove"
+                    },
+                    {
+                        "name": "Oz",
+                        "value": "Oz"
+                    },
+                    {
+                        "name": "Pound",
+                        "value": "Pound"
+                    },
+                    {
+                        "name": "Teaspoon",
+                        "value": "Teaspoon"
+                    },
+                    {
+                        "name": "Tablespoon",
+                        "value": "Tablespoon"
+                    },
+                    {
+                        "name": "ToTaste",
+                        "value": "ToTaste"
+                    },
+                    {
+                        "name": "PerServing",
+                        "value": "PerServing"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "description": "",
+                "file": "src/app/ingredient.ts"
+            }
+        ],
         "groupedVariables": {
+            "src/app/task/task.stories.ts": [
+                {
+                    "name": "actionsData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/task/task.stories.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  onPinTask: action('onPinTask'),\n  onArchiveTask: action('OnArchiveTask'),\n}"
+                },
+                {
+                    "name": "Archived",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/task/task.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  component: TaskComponent,\n  props: {\n    task: {\n      ...taskData,\n      state: 'TASK_ARCHIVED',\n    },\n    onPinTask: actionsData.onPinTask,\n    onArchiveTask: actionsData.onArchiveTask,\n  },\n})"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/task/task.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  component: TaskComponent,\n  props: {\n    taks: taskData,\n    onPinTask: actionsData.onPinTask,\n    onArchiveTask: actionsData.onArchiveTask\n  }\n})"
+                },
+                {
+                    "name": "Pinned",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/task/task.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  component: TaskComponent,\n  props: {\n    task: {\n      ...taskData,\n      state: 'TASK_PINNED',\n    },\n    onPinTask: actionsData.onPinTask,\n    onArchiveTask: actionsData.onArchiveTask,\n  }\n})"
+                },
+                {
+                    "name": "taskData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/task/task.stories.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  id: '1',\n  title: 'Test Task',\n  state: 'Task_INBOX',\n  updated_at: new Date(2019, 0, 1, 8, 0),\n}"
+                }
+            ],
             "src/test.ts": [
                 {
                     "name": "context",
@@ -752,32 +1709,6 @@
                     "defaultValue": "(args: Button) => ({\n  component: Button,\n  props: args,\n})"
                 }
             ],
-            "src/stories/Page.stories.ts": [
-                {
-                    "name": "LoggedIn",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Page.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "LoggedOut",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Page.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/Page.stories.ts",
-                    "type": "Story<Page>",
-                    "defaultValue": "(args: Page) => ({\n  component: Page,\n  props: args,\n})"
-                }
-            ],
             "src/stories/Header.stories.ts": [
                 {
                     "name": "LoggedIn",
@@ -804,6 +1735,32 @@
                     "defaultValue": "(args: Header) => ({\n  component: Header,\n  props: args,\n})"
                 }
             ],
+            "src/stories/Page.stories.ts": [
+                {
+                    "name": "LoggedIn",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Page.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "LoggedOut",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Page.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Page.stories.ts",
+                    "type": "Story<Page>",
+                    "defaultValue": "(args: Page) => ({\n  component: Page,\n  props: args,\n})"
+                }
+            ],
             "src/jest-config/globalMocks.ts": [
                 {
                     "name": "mock",
@@ -813,10 +1770,68 @@
                     "type": "",
                     "defaultValue": "() => {\n  let storage = {};\n  return {\n    getItem: (key) => (key in storage ? storage[key] : null),\n    setItem: (key, value) => (storage[key] = value || ''),\n    removeItem: (key) => delete storage[key],\n    clear: () => (storage = {}),\n  };\n}"
                 }
+            ],
+            "src/app/mock-recipes.ts": [
+                {
+                    "name": "RECIPES",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/mock-recipes.ts",
+                    "type": "Recipe[]",
+                    "defaultValue": "[\n  {\n    id: 1,\n    name: 'bacon and eggs ramen',\n    prep: '5 minutes',\n    cookTime: '20 minutes (not counting Zoodle and soft-boiled eggs)',\n    yield: '4 servings',\n    description:\n      'Soup, such as ramen, is eaten for breakfast in many cultures. It’s a great way to break your fast. This tasty version will keep you nice and warm all day long!',\n    recipeIngredient: [\n      {\n        name: \"toasted sesame oil\",\n        quantity: 1,\n        unit: Unit.Teaspoon,\n      },\n      {\n        name: \"coconut oil\",\n        quantity: 1,\n        unit: Unit.Tablespoon\n      },\n      {\n        name: \"ully cooked pork belly\",\n        quantity: 12,\n        unit: Unit.Oz\n      },\n      {\n        name: \"minced onions\",\n        quantity: 0.5,\n        unit: Unit.Cup\n      },\n      {\n        name: \"garlic clove\",\n        quantity: 2,\n        unit: Unit.Clove\n      },\n      {\n        name: \"red pepper flakes\",\n        quantity: 1,\n        unit: Unit.Tablespoon\n      },\n      {\n        name: \"cayenne pepper\",\n        quantity: 1.5,\n        unit: Unit.Teaspoon\n      },\n      {\n        name: \"chicken bone broth\",\n        quantity: 4,\n        unit: Unit.Cup\n\n      },\n      {\n        name: \"coconut aminos or wheat-free tamari\",\n        quantity: 2,\n        unit: Unit.Tablespoon\n      },\n      {\n        name: \"coconut vinegar or unseasoned rice vinegar\",\n        quantity: 1,\n        unit: Unit.Tablespoon\n      },\n      {\n        name: \"grated fresh ginger\",\n        quantity: 1,\n        unit: Unit.Tablespoon\n      },\n      {\n        name: \"Fine sea salt\",\n        unit: Unit.ToTaste\n      },\n      {\n        name: \"fresh groung black pepper\",\n        unit: Unit.ToTaste\n      },\n      {\n        name: \"Zoodles\",\n        quantity: 1,\n        unit: Unit.PerServing\n      },\n      {\n        name: \"Large eggs, soft-boiled\",\n        quantity: 4,\n        unit: Unit.Each\n      },\n      {\n        name: \"sliced green onions or red pepper flakes for garnish\"\n      }\n    ],\n    recipeInstructions:[\n      'Heat the oils in a large soup pot over medium heat.\",' +\n      \"Fry the pork belly in the hot oil until crisp on all sides, about 4 minutes per side.\",\n      \"Remove the pork belly from the pot with a slotted spoon, leaving the fat in the pot.\",\n      \"Add the onions, garlic, and red pepper flakes and cook over low heat for 4 minutes, or until the onions are translucent.\",\n      \"Add the chicken broth, coconut aminos, vinegar, ginger, and tomato paste and bring to a simmer over medium-high heat.\",\n      \"Simmer for 8 minutes, then add salt and pepper to taste. Just before serving, divide the zoodles among four bowls.\",\n      \"Add the chicken broth, coconut aminos, vinegar, ginger, and tomato paste and bring to a simmer over medium-high heat.\",\n      \"Top each bowl with 1 cup of the broth. Place a soft-boiled egg in each bowl and garnish with green onions and red pepper flakes. This dish is best served freshly made.\"\n      ],\n    nutrition: {\n      calories: 495,\n      fatContent: 40,\n      protein: 24,\n      carbs: 10,\n      fiber: 4,\n    }\n  },\n  {\n    id: 2,\n    name: 'florentine breakfast burgers',\n    prep: '5 minutes',\n    cookTime: '20 minutes (not counting english muffins)',\n    yield: '4 servings',\n    description:\n      'Soup, such as ramen, is eaten for breakfast in many cultures. It’s a great way to break your fast. This tasty version will keep you nice and warm all day long!',\n    recipeIngredient: [\n      {\n        name: \"Paleo fat, for frying\",\n        quantity: 1,\n        unit: Unit.Tablespoon\n      },\n      {\n        name: \"80% lean ground beef\",\n        quantity: 1,\n        unit: Unit.Pound\n      },\n      {\n        name: \"fine sea salt\",\n        quantity: 2.5,\n        unit: Unit.Teaspoon\n      },\n      {\n        name: \"fresh ground black pepper\",\n        quantity: 1.5,\n        unit: Unit.Teaspoon\n      },\n      {\n        name: \"spinach of other greens of choice\",\n        quantity: 2,\n        unit: Unit.Cup\n      },\n      {\n        name: \"large eggs\",\n        quantity: 4,\n        unit: Unit.Each\n      },\n      {\n        name: \"Keto English Muffins\",\n        quantity: 4,\n        unit: Unit.Each\n      },\n      {\n        name: \"tomato, 1/2 inch slices\",\n        quantity: 1,\n        unit: Unit.Each\n      },\n      {\n        name: \"Easy Basil Hollandaise\",\n        quantity: 0.5,\n        unit: Unit.Cup\n      },\n      {\n        name: \"Fresh basil leaves, for garnish\"\n      }\n      ],\n    recipeInstructions: [\n      '1. Heat the Paleo fat in a cast-iron skillet over medium-high heat.',\n      '2. Using your hands, form the meat into 4 patties. Season the outsides with the salt and pepper. Fry the burgers in the pan on both sides until they reach your desired doneness (see the chart below).',\n      '3. Remove the burgers from the pan, leaving the fat in the pan. Add the spinach, season with salt and pepper, and sauté over medium heat until the leaves are softened, about 2 minutes.',\n      '4. Poach the eggs (see here).',\n      '5. Serve each burger on an English muffin, fried in the leftover fat if desired. Top with a slice of tomato, one-quarter of the wilted spinach, a poached egg, and some basil hollandaise. Garnish with fresh basil. These burgers are best served fresh.'\n    ],\n    nutrition:{\n      calories: 640,\n      fatContent: 52,\n      protein: 37,\n      carbs: 5,\n      fiber: 3,\n    }\n  }\n]"
+                }
             ]
         },
         "groupedFunctions": {},
-        "groupedEnumerations": {},
+        "groupedEnumerations": {
+            "src/app/ingredient.ts": [
+                {
+                    "name": "Unit",
+                    "childs": [
+                        {
+                            "name": "Cup",
+                            "value": "cup"
+                        },
+                        {
+                            "name": "Each",
+                            "value": "each"
+                        },
+                        {
+                            "name": "Clove",
+                            "value": "clove"
+                        },
+                        {
+                            "name": "Oz",
+                            "value": "Oz"
+                        },
+                        {
+                            "name": "Pound",
+                            "value": "Pound"
+                        },
+                        {
+                            "name": "Teaspoon",
+                            "value": "Teaspoon"
+                        },
+                        {
+                            "name": "Tablespoon",
+                            "value": "Tablespoon"
+                        },
+                        {
+                            "name": "ToTaste",
+                            "value": "ToTaste"
+                        },
+                        {
+                            "name": "PerServing",
+                            "value": "PerServing"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "description": "",
+                    "file": "src/app/ingredient.ts"
+                }
+            ]
+        },
         "groupedTypeAliases": {}
     },
     "routes": {
@@ -828,13 +1843,31 @@
                 "name": "routes",
                 "filename": "src/app/app-routing.module.ts",
                 "module": "AppRoutingModule",
-                "children": [],
+                "children": [
+                    {
+                        "path": "",
+                        "redirectTo": "/dashboard",
+                        "pathMatch": "full"
+                    },
+                    {
+                        "path": "dashboard",
+                        "component": "DashboardComponent"
+                    },
+                    {
+                        "path": "recipes",
+                        "component": "RecipesComponent"
+                    },
+                    {
+                        "path": "detail/:id",
+                        "component": "RecipeDetailComponent"
+                    }
+                ],
                 "kind": "module"
             }
         ]
     },
     "coverage": {
-        "count": 3,
+        "count": 2,
         "status": "low",
         "files": [
             {
@@ -856,13 +1889,86 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/dashboard/dashboard.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DashboardComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ingredient.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Ingredient",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/message.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "MessageService",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/messages/messages.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MessagesComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/mock-recipes.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "RECIPES",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/nutrition.ts",
                 "type": "interface",
                 "linktype": "interface",
-                "name": "Ingredients",
+                "name": "Nutrition",
                 "coveragePercent": 0,
                 "coverageCount": "0/6",
                 "status": "low"
+            },
+            {
+                "filePath": "src/app/recipe-detail/recipe-detail.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RecipeDetailComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/recipe-editor/recipe-editor.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RecipeEditorComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/recipe.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "RecipeService",
+                "coveragePercent": 28,
+                "coverageCount": "2/7",
+                "status": "medium"
             },
             {
                 "filePath": "src/app/recipe.ts",
@@ -870,7 +1976,7 @@
                 "linktype": "interface",
                 "name": "Recipe",
                 "coveragePercent": 0,
-                "coverageCount": "0/8",
+                "coverageCount": "0/10",
                 "status": "low"
             },
             {
@@ -879,7 +1985,75 @@
                 "linktype": "component",
                 "name": "RecipesComponent",
                 "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/task/task.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TaskComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/task/task.model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Task",
+                "coveragePercent": 0,
                 "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/task/task.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "actionsData",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/task/task.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Archived",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/task/task.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/task/task.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Pinned",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/task/task.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "taskData",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {

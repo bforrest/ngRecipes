@@ -10,6 +10,7 @@
     "src/test.ts",
     "src/**/*.spec.ts",
     "**/*.stories.ts",
+    "**/*.test.ts",
     "src/jest-config"
   ]
 }

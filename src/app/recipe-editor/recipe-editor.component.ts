@@ -9,27 +9,27 @@ import { FormArray } from '@angular/forms';
   styleUrls: ['./recipe-editor.component.css']
 })
 export class RecipeEditorComponent {
-  recipeForm = this.fb.group({
-    name: ['', Validators.required],
-    prep: ['', Validators.required],
-    cookTime: [''],
-    yield: ['', Validators.required],
-    description: [''],
-    recipeIngredient: this.fb.group({
+  // recipeForm = this.fb.group({
+  //   name: ['', Validators.required],
+  //   prep: ['', Validators.required],
+  //   cookTime: [''],
+  //   yield: ['', Validators.required],
+  //   description: [''],
+  //   recipeIngredient: this.fb.group({
+  //
+  //   }),
+  //   nutrition:
+  // })
 
-    }),
-    nutrition:
-  })
 
-
-  updateRecipe(){
-    this.recipeForm.patchValue({
-      firstName: 'Nancy',
-      address: {
-        street: '123 Drew Street'
-      }
-    });
-  }
+  // updateRecipe(){
+  //   this.recipeForm.patchValue({
+  //     firstName: 'Nancy',
+  //     address: {
+  //       street: '123 Drew Street'
+  //     }
+  //   });
+  // }
   constructor(private fb: FormBuilder) { }
 
 }
