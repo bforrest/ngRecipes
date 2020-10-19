@@ -17,7 +17,13 @@ import { TaskComponent } from './task/task.component';
 
 
 @NgModule({
-  declarations: [AppComponent, RecipesComponent, RecipeDetailComponent, DashboardComponent, MessagesComponent, RecipeEditorComponent, TaskComponent],
+  declarations: [AppComponent,
+    RecipesComponent,
+    RecipeDetailComponent,
+    DashboardComponent,
+    MessagesComponent,
+    RecipeEditorComponent,
+    TaskComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -28,6 +34,6 @@ import { TaskComponent } from './task/task.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-});
+})
 
 export class AppModule {}

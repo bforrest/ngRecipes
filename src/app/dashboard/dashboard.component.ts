@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Recipe} from "../recipe";
 import {RecipeService} from "../recipe.service";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
