@@ -438,7 +438,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-745928435ce703570b06da097196f44e",
+            "id": "component-AppComponent-629d0b9c95ae3059327b12125470e22b",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -463,7 +463,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 9
+                    "line": 10
                 }
             ],
             "methodsClass": [],
@@ -472,7 +472,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.css'],\n})\nexport class AppComponent {\n  title = 'ng Recipes';\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.css'],\n})\n\nexport class AppComponent {\n  title = 'ng Recipes';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -481,7 +481,7 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<h1>{{ title }}</h1>\n<nav>\n  <a routerLink=\"/dashboard\">Dashboard</a>\n  <a routerLink=\"/recipes\">Recipes</a>\n</nav>\n<router-outlet></router-outlet>\n<app-recipe-editor></app-recipe-editor>\n<app-messages></app-messages>\n"
+            "templateData": "<h1>{{ title }}</h1>\n<nav>\n  <a routerLink=\"/dashboard\">Dashboard</a>\n  <a routerLink=\"/recipes\">Recipes</a>\n</nav>\n<router-outlet></router-outlet>\n<!--<app-recipe-editor></app-recipe-editor>-->\n<app-messages></app-messages>\n"
         },
         {
             "name": "ButtonComponent",
@@ -566,7 +566,7 @@
         },
         {
             "name": "DashboardComponent",
-            "id": "component-DashboardComponent-bf9a0cb5eb61607dadd6efd5f37114dd",
+            "id": "component-DashboardComponent-8a4e12ac91df535944ad68f8948fabac",
             "file": "src/app/dashboard/dashboard.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -590,14 +590,14 @@
                     "type": "Recipe[]",
                     "optional": false,
                     "description": "",
-                    "line": 11
+                    "line": 12
                 },
                 {
                     "name": "selectedRecipe",
                     "type": "Recipe",
                     "optional": false,
                     "description": "",
-                    "line": 13
+                    "line": 14
                 }
             ],
             "methodsClass": [
@@ -607,7 +607,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 15
+                    "line": 16
                 },
                 {
                     "name": "ngOnInit",
@@ -615,7 +615,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 23
+                    "line": 24
                 },
                 {
                     "name": "onSelect",
@@ -628,7 +628,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 19,
+                    "line": 20,
                     "jsdoctags": [
                         {
                             "name": "recipe",
@@ -645,7 +645,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport {Recipe} from \"../recipe\";\nimport {RecipeService} from \"../recipe.service\";\n\n@Component({\n  selector: 'app-dashboard',\n  templateUrl: './dashboard.component.html',\n  styleUrls: ['./dashboard.component.css']\n})\nexport class DashboardComponent implements OnInit {\n  recipes: Recipe[];\n\n  selectedRecipe: Recipe;\n\n  getRecipes(): void {\n    this.recipeService.getRecipes()\n      .subscribe( result => this.recipes = result.slice(0,3))\n  }\n  onSelect(recipe: Recipe): void{\n    this.selectedRecipe = recipe;\n  }\n  constructor(private recipeService: RecipeService) {}\n  ngOnInit(): void {\n    this.getRecipes();\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport {Recipe} from \"../recipe\";\nimport {RecipeService} from \"../recipe.service\";\nimport { RouterModule } from '@angular/router';\n\n@Component({\n  selector: 'app-dashboard',\n  templateUrl: './dashboard.component.html',\n  styleUrls: ['./dashboard.component.css']\n})\nexport class DashboardComponent implements OnInit {\n  recipes: Recipe[];\n\n  selectedRecipe: Recipe;\n\n  getRecipes(): void {\n    this.recipeService.getRecipes()\n      .subscribe( result => this.recipes = result.slice(0,3))\n  }\n  onSelect(recipe: Recipe): void{\n    this.selectedRecipe = recipe;\n  }\n  constructor(private recipeService: RecipeService) {}\n  ngOnInit(): void {\n    this.getRecipes();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -663,7 +663,7 @@
                         "type": "RecipeService"
                     }
                 ],
-                "line": 21,
+                "line": 22,
                 "jsdoctags": [
                     {
                         "name": "recipeService",
@@ -1000,7 +1000,7 @@
         },
         {
             "name": "RecipeEditorComponent",
-            "id": "component-RecipeEditorComponent-a48411fe71c9151c49585c804116018d",
+            "id": "component-RecipeEditorComponent-c0ae17b44e34da318957dadd27ae6f2f",
             "file": "src/app/recipe-editor/recipe-editor.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1025,7 +1025,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormBuilder } from '@angular/forms';\nimport { Validators } from '@angular/forms';\nimport { FormArray } from '@angular/forms';\n\n@Component({\n  selector: 'app-recipe-editor',\n  templateUrl: './recipe-editor.component.html',\n  styleUrls: ['./recipe-editor.component.css']\n})\nexport class RecipeEditorComponent {\n  // recipeForm = this.fb.group({\n  //   name: ['', Validators.required],\n  //   prep: ['', Validators.required],\n  //   cookTime: [''],\n  //   yield: ['', Validators.required],\n  //   description: [''],\n  //   recipeIngredient: this.fb.group({\n  //\n  //   }),\n  //   nutrition:\n  // })\n\n\n  // updateRecipe(){\n  //   this.recipeForm.patchValue({\n  //     firstName: 'Nancy',\n  //     address: {\n  //       street: '123 Drew Street'\n  //     }\n  //   });\n  // }\n  constructor(private fb: FormBuilder) { }\n\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { FormBuilder } from '@angular/forms';\nimport { Validators } from '@angular/forms';\nimport { FormArray } from '@angular/forms';\n\n@Component({\n  selector: 'app-recipe-editor',\n  templateUrl: './recipe-editor.component.html',\n  styleUrls: ['./recipe-editor.component.css']\n})\nexport class RecipeEditorComponent {\n  // recipeForm = this.fb.group({\n  //   name: ['', Validators.required],\n  //   prep: ['', Validators.required],\n  //   cookTime: [''],\n  //   yield: ['', Validators.required],\n  //   description: [''],\n  //   recipeIngredient: this.fb.group({\n  //\n  //   }),\n  //   nutrition:\n  // })\n\n\n  // updateRecipe(){\n  //   this.recipeForm.patchValue({\n  //     firstName: 'Nancy',\n  //     address: {\n  //       street: '123 Drew Street'\n  //     }\n  //   });\n  // }\n  //constructor(private fb: FormBuilder) { }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1034,31 +1034,11 @@
                 }
             ],
             "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "args": [
-                    {
-                        "name": "fb",
-                        "type": "FormBuilder"
-                    }
-                ],
-                "line": 11,
-                "jsdoctags": [
-                    {
-                        "name": "fb",
-                        "type": "FormBuilder",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
-            },
             "templateData": "<!--&lt;!&ndash;<form [formGroup]=\"recipeForm\" (ngSubmit)=\"onSubmit()\">&ndash;&gt;-->\n<!--<form>-->\n<!--  <label>-->\n<!--    First Name:-->\n<!--    <input type=\"text\" formControlName=\"firstName\" required>-->\n<!--  </label>-->\n\n<!--  <label>-->\n<!--    Last Name:-->\n<!--    <input type=\"text\" formControlName=\"lastName\">-->\n<!--  </label>-->\n\n<!--  <div formGroupName=\"address\">-->\n<!--    <h3>Address</h3>-->\n\n<!--    <label>-->\n<!--      Street:-->\n<!--      <input type=\"text\" formControlName=\"street\">-->\n<!--    </label>-->\n\n<!--    <label>-->\n<!--      City:-->\n<!--      <input type=\"text\" formControlName=\"city\">-->\n<!--    </label>-->\n\n<!--    <label>-->\n<!--      State:-->\n<!--      <input type=\"text\" formControlName=\"state\">-->\n<!--    </label>-->\n\n<!--    <label>-->\n<!--      Zip Code:-->\n<!--      <input type=\"text\" formControlName=\"zip\">-->\n<!--    </label>-->\n<!--  </div>-->\n\n<!--  <div formArrayName=\"aliases\">-->\n<!--    <h3>Aliases</h3> <button (click)=\"addAlias()\">Add Alias</button>-->\n\n<!--    <div *ngFor=\"let alias of aliases.controls; let i=index\">-->\n<!--      &lt;!&ndash; The repeated alias template &ndash;&gt;-->\n<!--      <label>-->\n<!--        Alias:-->\n<!--        <input type=\"text\" [formControlName]=\"i\">-->\n<!--      </label>-->\n<!--    </div>-->\n<!--  </div>-->\n\n<!--  <button type=\"submit\" [disabled]=\"!recipeForm.valid\">Submit</button>-->\n<!--</form>-->\n\n<!--<hr>-->\n\n\n<!--<p>-->\n<!--&lt;!&ndash;  Form Value: {{ recipeForm.value | json }}&ndash;&gt;-->\n<!--</p>-->\n\n\n<!--<p>-->\n<!--&lt;!&ndash;  Form Status: {{ recipeForm.status }}&ndash;&gt;-->\n<!--</p>-->\n\n<!--<p>-->\n<!--&lt;!&ndash;  <button (click)=\"updateRecipe()\">Update Profile</button>&ndash;&gt;-->\n<!--</p>-->\n\n\n<!--&lt;!&ndash;-->\n<!--Copyright Google LLC. All Rights Reserved.-->\n<!--Use of this source code is governed by an MIT-style license that-->\n<!--can be found in the LICENSE file at http://angular.io/license-->\n<!--&ndash;&gt;-->\n"
         },
         {
             "name": "RecipesComponent",
-            "id": "component-RecipesComponent-1f1f687e055509cfae76d33e19356462",
+            "id": "component-RecipesComponent-9a38cb121c2ef89826207d9a874cdc94",
             "file": "src/app/recipes/recipes.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1082,7 +1062,7 @@
                     "type": "Recipe[]",
                     "optional": false,
                     "description": "",
-                    "line": 12
+                    "line": 11
                 }
             ],
             "methodsClass": [
@@ -1092,7 +1072,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 14
+                    "line": 13
                 },
                 {
                     "name": "ngOnInit",
@@ -1100,7 +1080,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 19
+                    "line": 18
                 }
             ],
             "hostBindings": [],
@@ -1108,7 +1088,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {Component, Input, OnInit} from '@angular/core';\nimport {Recipe } from '../recipe';\nimport { RECIPES } from '../mock-recipes';\nimport {RecipeService} from \"../recipe.service\";\n\n@Component({\n  selector: 'app-recipes',\n  templateUrl: './recipes.component.html',\n  styleUrls: ['./recipes.component.css'],\n})\nexport class RecipesComponent implements OnInit {\n  recipes: Recipe[];\n\n  getRecipes(): void {\n    this.recipeService.getRecipes().subscribe( result => this.recipes = result)\n  }\n\n  constructor(private recipeService: RecipeService) {}\n  ngOnInit(): void {\n    this.getRecipes();\n  }\n}\n",
+            "sourceCode": "import {Component, Input, OnInit} from '@angular/core';\nimport {Recipe } from '../recipe';\nimport {RecipeService} from \"../recipe.service\";\n\n@Component({\n  selector: 'app-recipes',\n  templateUrl: './recipes.component.html',\n  styleUrls: ['./recipes.component.css'],\n})\nexport class RecipesComponent implements OnInit {\n  recipes: Recipe[];\n\n  getRecipes(): void {\n    this.recipeService.getRecipes().subscribe( result => this.recipes = result)\n  }\n\n  constructor(private recipeService: RecipeService) {}\n  ngOnInit(): void {\n    this.getRecipes();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1126,7 +1106,7 @@
                         "type": "RecipeService"
                     }
                 ],
-                "line": 16,
+                "line": 15,
                 "jsdoctags": [
                     {
                         "name": "recipeService",
@@ -1958,7 +1938,7 @@
                 "linktype": "component",
                 "name": "RecipeEditorComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
