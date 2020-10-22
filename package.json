@@ -12,7 +12,8 @@
     "e2e": "ng e2e",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006",
-    "build-storybook": "npm run docs:json && build-storybook"
+    "build-storybook": "npm run docs:json && build-storybook",
+    "all" : "json-server db.json --routes routes.json && npm run storybook && npm serve --open"
   },
   "jest": {
     "preset": "jest-preset-angular",

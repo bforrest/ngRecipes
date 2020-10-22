@@ -21,7 +21,7 @@ export const taskData = {
 export const Default = () => ({
   component: TaskComponent,
   props: {
-    taks: taskData,
+    task: taskData,
     onPinTask: actionsData.onPinTask,
     onArchiveTask: actionsData.onArchiveTask
   }

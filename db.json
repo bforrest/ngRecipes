@@ -20,7 +20,7 @@
             "unit": "Unit.Tablespoon"
           },
           {
-            "name": "ully cooked pork belly",
+            "name": "fully cooked pork belly",
             "quantity": 12,
             "unit": "Unit.Oz"
           },
@@ -178,7 +178,7 @@
           "fiber": 3
         }
       },
-    {
+      {
       "id": 99,
       "name": "Blueberry (Cauliflower) Rice Pudding",
       "prep": "5 minutes",
@@ -218,14 +218,14 @@
           "unit": "Unit.Cup"
         }
       ],
-        "recipeInstructions": [
-          "1. Set the Instant Pot to Sauté and melt the cacao butter.",
-          "2. Add the cauliflower rice and stir to coat it with the cacao butter. Add the almond milk, protein powder, salt, blueberries, and stevia (if using) and stir very well to combine.",
-          "3. Press Cancel. Secure the lid and set the steam release valve to Sealing. Press the Pressure Cook or Manual button and set the cook time to 3 minutes.",
-          "4. When the Instant Pot beeps, allow the pressure to release naturally for 5 minutes, then carefully switch the steam release valve to Venting. When fully released, open the lid and stir the pudding.",
-          "5. Spoon the pudding into individual bowls and allow it to cool for a few minutes, then top with the optional toppings of your choosing. Serve warm or at room temperature.",
-          "6. Optional Toppings: Heavy whipping cream, full-fat coconut milk, or coconut cream Slivered almonds or other chopped nuts Finely shredded coconut "
-        ],
+      "recipeInstructions": [
+        "1. Set the Instant Pot to Sauté and melt the cacao butter.",
+        "2. Add the cauliflower rice and stir to coat it with the cacao butter. Add the almond milk, protein powder, salt, blueberries, and stevia (if using) and stir very well to combine.",
+        "3. Press Cancel. Secure the lid and set the steam release valve to Sealing. Press the Pressure Cook or Manual button and set the cook time to 3 minutes.",
+        "4. When the Instant Pot beeps, allow the pressure to release naturally for 5 minutes, then carefully switch the steam release valve to Venting. When fully released, open the lid and stir the pudding.",
+        "5. Spoon the pudding into individual bowls and allow it to cool for a few minutes, then top with the optional toppings of your choosing. Serve warm or at room temperature.",
+        "6. Optional Toppings: Heavy whipping cream, full-fat coconut milk, or coconut cream Slivered almonds or other chopped nuts Finely shredded coconut "
+      ],
         "nutrition":{
           "calories": 147,
           "fatContent": 10,
@@ -233,8 +233,8 @@
           "carbs": 9,
           "fiber": 0
         }
-    },
-        {
+      },
+      {
           "id": 100,
           "name": "Breakfast Stuffed Mushrooms",
           "prep": "",
@@ -313,6 +313,6 @@
               "carbs": 14,
               "fiber": 0
             }
-          },
-      ]
+      }
+  ]
 }
