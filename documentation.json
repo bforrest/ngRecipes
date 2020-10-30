@@ -3,10 +3,10 @@
     "interfaces": [
         {
             "name": "Ingredient",
-            "id": "interface-Ingredient-70c245a298b18a55825ad324f9c222f0",
+            "id": "interface-Ingredient-d7ffee2ad58165c1d7f79925d9d9a148",
             "file": "src/app/ingredient.ts",
             "type": "interface",
-            "sourceCode": "export interface Ingredient{\n  name: string;\n  quantity?: number;\n  unit?: Unit;\n}\n\nexport enum Unit {\n  Cup =\"cup\",\n  Each= \"each\",\n  Clove = \"clove\",\n  Oz =\"Oz\",\n  Pound = \"Pound\",\n  Teaspoon = \"Teaspoon\",\n  Tablespoon = \"Tablespoon\",\n  ToTaste = \"ToTaste\",\n  PerServing = \"PerServing\"\n}\n\n",
+            "sourceCode": "export interface Ingredient{\n  name: string;\n  quantity?: number;\n  unit?: Unit;\n}\n\nexport enum Unit {\n  Cup =\"cup\",\n  Each= \"each\",\n  Clove = \"clove\",\n  Oz =\"Ounce\",\n  Pound = \"Pound\",\n  Teaspoon = \"Teaspoon\",\n  Tablespoon = \"Tablespoon\",\n  ToTaste = \"To Taste\",\n  PerServing = \"Per Serving\"\n}\n\n",
             "properties": [
                 {
                     "name": "name",
@@ -481,7 +481,7 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<h1>{{ title }}</h1>\n<nav>\n  <a routerLink=\"/dashboard\">Dashboard</a>\n  <a routerLink=\"/recipes\">Recipes</a>\n</nav>\n<router-outlet></router-outlet>\n<!--<app-recipe-editor></app-recipe-editor>-->\n<app-messages></app-messages>\n"
+            "templateData": "<h1>{{ title }}</h1>\n<nav>\n  <a routerLink=\"/dashboard\">Dashboard</a>\n  <a routerLink=\"/recipes\">Recipes</a>\n  <a routerLink=\"/new\">New Recipe</a>\n</nav>\n<router-outlet></router-outlet>\n<app-messages></app-messages>\n"
         },
         {
             "name": "ButtonComponent",
@@ -742,6 +742,233 @@
             "stylesData": ""
         },
         {
+            "name": "IngredientComponent",
+            "id": "component-IngredientComponent-a1a21f47b53e00e2d89ca8285ace3969",
+            "file": "src/app/ingredient/ingredient.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "{\n    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => IngredientComponent), multi: true\n}",
+                    "type": "component"
+                },
+                {
+                    "name": "{\n    provide: NG_VALIDATORS, useExisting: forwardRef(() => IngredientComponent), multi: true\n}",
+                    "type": "component"
+                }
+            ],
+            "selector": "app-ingredient",
+            "styleUrls": [
+                "./ingredient.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./ingredient.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "model",
+                    "line": 33,
+                    "type": "Ingredient"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "ingredientFormGroup",
+                    "defaultValue": "this.fb.group({\n    name: ['', Validators.required],\n    quantity: [''],\n    unit: ['']\n})",
+                    "type": "FormGroup",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                },
+                {
+                    "name": "submitted",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 34
+                },
+                {
+                    "name": "unitOptions",
+                    "defaultValue": "[]",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 35
+                },
+                {
+                    "name": "unitType",
+                    "defaultValue": "Unit",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 37
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 46
+                },
+                {
+                    "name": "onSubmit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 39
+                },
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 50,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "validate",
+                    "args": [
+                        {
+                            "name": "control",
+                            "type": "AbstractControl"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "ValidationErrors | null",
+                    "typeParameters": [],
+                    "line": 56,
+                    "jsdoctags": [
+                        {
+                            "name": "control",
+                            "type": "AbstractControl",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "obj",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 60,
+                    "jsdoctags": [
+                        {
+                            "name": "obj",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import {Component, OnInit, Input, Output, EventEmitter, forwardRef} from '@angular/core';\nimport { AbstractControl, ControlValueAccessor, FormBuilder, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';\nimport {Ingredient, Unit} from \"../ingredient\";\n\ntype ChangeCallbackFn<T> = (value: T) => void;\ntype TouchCallbackFn = () => void;\n\n@Component({\n  selector: 'app-ingredient',\n  templateUrl: './ingredient.component.html',\n  styleUrls: ['./ingredient.component.css'],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef( () => IngredientComponent),\n      multi: true\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => IngredientComponent),\n      multi: true\n    }\n  ]\n})\n\nexport class IngredientComponent implements ControlValueAccessor, Validator, OnInit {\n  ingredientFormGroup: FormGroup = this.fb.group({\n    name: ['', Validators.required],\n    quantity: [''],\n    unit: ['']\n});\n\n  @Input() model: Ingredient;\n  submitted = false;\n  unitOptions = [];\n\n  unitType = Unit;\n\n  onSubmit() { this.submitted = true; }\n\n  // TODO: Remove this when we're done\n  get diagnostic() { return JSON.stringify(this.model); }\n\n  constructor(private fb: FormBuilder) { }\n\n  ngOnInit(): void {\n    this.unitOptions = Object.keys(this.unitType);\n  }\n\n  registerOnChange(fn: any): void {\n  }\n\n  registerOnTouched(fn: any): void {\n  }\n\n  validate(control: AbstractControl): ValidationErrors | null {\n    return undefined;\n  }\n\n  writeValue(obj: any): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./ingredient.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder"
+                    }
+                ],
+                "line": 42,
+                "jsdoctags": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "ControlValueAccessor",
+                "Validator",
+                "OnInit"
+            ],
+            "accessors": {
+                "diagnostic": {
+                    "name": "diagnostic",
+                    "getSignature": {
+                        "name": "diagnostic",
+                        "type": "",
+                        "returnType": "",
+                        "line": 42
+                    }
+                }
+            },
+            "templateData": "<form>\n  <div class=\"form-group\">\n    <label for=\"name\">Name</label>\n    <input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"Ingredient Name*\" value=\"{{model.name}}\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"quantity\">Quantity</label>\n    <input type=\"text\" class=\"form-control\" id=\"quantity\" placeholder=\"Quantity*\" value=\"{{model.quantity}}\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"unitType\">Unit</label>\n    <select class=\"form-control\" id=\"unitType\" [(ngModel)]=\"model.unit\">\n      <option value=\"\">Optional</option>\n      <option *ngFor=\"let key of unitOptions\" [ngValue]=\"key\">{{unitType[key]}}</option>\n    </select>\n  </div>\n</form>\n"
+        },
+        {
             "name": "MessagesComponent",
             "id": "component-MessagesComponent-103c49a00d2b29135918565672ba6057",
             "file": "src/app/messages/messages.component.ts",
@@ -996,11 +1223,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<button (click)=\"goBack()\">go back</button>\n<div *ngIf=\"recipe\">\n  <h3>Ingredients</h3>\n  <h4>{{recipe.name}}</h4>\n  <li *ngFor=\"let item of recipe.recipeIngredient let i = index\">\n    <span *ngIf=\"item?.quantity\">\n      {{item.quantity}} - {{item.unit}}\n      </span>\n    {{item.name}}\n\n  </li>\n  <h3>Directions</h3>\n  <li *ngFor=\"let item of recipe.recipeInstructions let i = index\">\n    {{item}}\n  </li>\n</div>\n<button (click)=\"goBack()\">go back</button>\n"
+            "templateData": "<button (click)=\"goBack()\">go back</button>\n<div *ngIf=\"recipe\">\n  <h3>{{recipe.name}}</h3>\n  <h4>Ingredients</h4>\n  <li *ngFor=\"let item of recipe.recipeIngredient let i = index\">\n    <span *ngIf=\"item?.quantity\">\n      {{item.quantity}} - {{item.unit}}\n      </span>\n    {{item.name}}\n\n  </li>\n  <h4>Directions</h4>\n  <li *ngFor=\"let item of recipe.recipeInstructions let i = index\">\n    {{item}}\n  </li>\n</div>\n<button (click)=\"goBack()\">go back</button>\n"
         },
         {
             "name": "RecipeEditorComponent",
-            "id": "component-RecipeEditorComponent-c0ae17b44e34da318957dadd27ae6f2f",
+            "id": "component-RecipeEditorComponent-4b38ca474e4d9a55e18386d90f02d017",
             "file": "src/app/recipe-editor/recipe-editor.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1016,25 +1243,54 @@
                 "./recipe-editor.component.html"
             ],
             "viewProviders": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "recipe",
+                    "line": 17,
+                    "type": "Recipe"
+                }
+            ],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "keys",
+                    "defaultValue": "Object.keys",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "unitType",
+                    "defaultValue": "Unit",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                }
+            ],
             "methodsClass": [],
             "hostBindings": [],
             "hostListeners": [],
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { FormBuilder } from '@angular/forms';\nimport { Validators } from '@angular/forms';\nimport { FormArray } from '@angular/forms';\n\n@Component({\n  selector: 'app-recipe-editor',\n  templateUrl: './recipe-editor.component.html',\n  styleUrls: ['./recipe-editor.component.css']\n})\nexport class RecipeEditorComponent {\n  // recipeForm = this.fb.group({\n  //   name: ['', Validators.required],\n  //   prep: ['', Validators.required],\n  //   cookTime: [''],\n  //   yield: ['', Validators.required],\n  //   description: [''],\n  //   recipeIngredient: this.fb.group({\n  //\n  //   }),\n  //   nutrition:\n  // })\n\n\n  // updateRecipe(){\n  //   this.recipeForm.patchValue({\n  //     firstName: 'Nancy',\n  //     address: {\n  //       street: '123 Drew Street'\n  //     }\n  //   });\n  // }\n  //constructor(private fb: FormBuilder) { }\n\n}\n",
+            "sourceCode": "import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core';\nimport { FormBuilder } from '@angular/forms';\nimport { Validators } from '@angular/forms';\nimport { FormArray } from '@angular/forms';\nimport { Unit } from '../ingredient';\nimport {Recipe} from \"../recipe\";\n\n@Component({\n  selector: 'app-recipe-editor',\n  templateUrl: './recipe-editor.component.html',\n  styleUrls: ['./recipe-editor.component.css']\n})\n\nexport class RecipeEditorComponent {\n  unitType= Unit;\n  keys= Object.keys;\n  @Input() recipe: Recipe;\n\n  constructor() { }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": "@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');\n",
                     "styleUrl": "./recipe-editor.component.css"
                 }
             ],
             "stylesData": "",
-            "templateData": "<!--&lt;!&ndash;<form [formGroup]=\"recipeForm\" (ngSubmit)=\"onSubmit()\">&ndash;&gt;-->\n<!--<form>-->\n<!--  <label>-->\n<!--    First Name:-->\n<!--    <input type=\"text\" formControlName=\"firstName\" required>-->\n<!--  </label>-->\n\n<!--  <label>-->\n<!--    Last Name:-->\n<!--    <input type=\"text\" formControlName=\"lastName\">-->\n<!--  </label>-->\n\n<!--  <div formGroupName=\"address\">-->\n<!--    <h3>Address</h3>-->\n\n<!--    <label>-->\n<!--      Street:-->\n<!--      <input type=\"text\" formControlName=\"street\">-->\n<!--    </label>-->\n\n<!--    <label>-->\n<!--      City:-->\n<!--      <input type=\"text\" formControlName=\"city\">-->\n<!--    </label>-->\n\n<!--    <label>-->\n<!--      State:-->\n<!--      <input type=\"text\" formControlName=\"state\">-->\n<!--    </label>-->\n\n<!--    <label>-->\n<!--      Zip Code:-->\n<!--      <input type=\"text\" formControlName=\"zip\">-->\n<!--    </label>-->\n<!--  </div>-->\n\n<!--  <div formArrayName=\"aliases\">-->\n<!--    <h3>Aliases</h3> <button (click)=\"addAlias()\">Add Alias</button>-->\n\n<!--    <div *ngFor=\"let alias of aliases.controls; let i=index\">-->\n<!--      &lt;!&ndash; The repeated alias template &ndash;&gt;-->\n<!--      <label>-->\n<!--        Alias:-->\n<!--        <input type=\"text\" [formControlName]=\"i\">-->\n<!--      </label>-->\n<!--    </div>-->\n<!--  </div>-->\n\n<!--  <button type=\"submit\" [disabled]=\"!recipeForm.valid\">Submit</button>-->\n<!--</form>-->\n\n<!--<hr>-->\n\n\n<!--<p>-->\n<!--&lt;!&ndash;  Form Value: {{ recipeForm.value | json }}&ndash;&gt;-->\n<!--</p>-->\n\n\n<!--<p>-->\n<!--&lt;!&ndash;  Form Status: {{ recipeForm.status }}&ndash;&gt;-->\n<!--</p>-->\n\n<!--<p>-->\n<!--&lt;!&ndash;  <button (click)=\"updateRecipe()\">Update Profile</button>&ndash;&gt;-->\n<!--</p>-->\n\n\n<!--&lt;!&ndash;-->\n<!--Copyright Google LLC. All Rights Reserved.-->\n<!--Use of this source code is governed by an MIT-style license that-->\n<!--can be found in the LICENSE file at http://angular.io/license-->\n<!--&ndash;&gt;-->\n"
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 17
+            },
+            "templateData": "<div class=\"panel panel-primary\">\n  <div class=\"panel-heading\">\n    Recipe Name:\n  </div>\n  <div class=\"panel-body\">\n\n  </div>\n  <input value=\"{{recipe.name}}}\" placeholder=\"Recipe Name*\">\n</div>\n<div class=\"panel panel-success\">\n  <div class=\"panel-heading\">\n    <h3 class=\"panel-title\">Ingredients</h3>\n  </div>\n  <div class=\"panel-body\">\n\n  </div>\n</div>\n<div class=\"panel panel-info\">\n  <div class=\"panel-heading\">\n    <h3 class=\"panel-title\">Instructions</h3>\n  </div>\n  <div class=\"panel-body\">\n\n  </div>\n</div>\n<div class=\"panel panel-warning\">\n  <div class=\"panel-heading\">\n    <h3 class=\"panel-title\">Nutrition</h3>\n  </div>\n  <div class=\"panel-body\">\n\n  </div>\n</div>\n"
         },
         {
             "name": "RecipesComponent",
@@ -1120,7 +1376,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<h2>My Recipes</h2>\n<ul class=\"heroes\">\n  <li *ngFor=\"let recipe of recipes\"\n      [class.selected]=\"recipe === selectedRecipe\"\n      (click)=\"onSelect(recipe)\">\n    <a routerLink=\"/detail/{{recipe.id}}\">\n      <span class=\"badge\">{{recipe.id}}</span> {{recipe.name}}\n    </a>\n  </li>\n</ul>\n\n"
+            "templateData": "<h2>My Recipes</h2>\n<ul class=\"heroes\">\n  <li *ngFor=\"let recipe of recipes\">\n    <a routerLink=\"/detail/{{recipe.id}}\">\n      <span class=\"badge\">{{recipe.id}}</span> {{recipe.name}}\n    </a>\n  </li>\n</ul>\n\n"
         },
         {
             "name": "TaskComponent",
@@ -1268,6 +1524,9 @@
                             "name": "DashboardComponent"
                         },
                         {
+                            "name": "IngredientComponent"
+                        },
+                        {
                             "name": "MessagesComponent"
                         },
                         {
@@ -1370,9 +1629,41 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/app/ingredient/ingredient.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  component: IngredientComponent,\n  props: {\n    model: object('model', { ...ingredientData })\n  }\n})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/recipe-editor/recipe-editor.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  component: RecipeEditorComponent,\n  props: {\n    recipe: defaultRecipeData\n  }\n})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/app/task/task.stories.ts",
                 "type": "",
-                "defaultValue": "() => ({\n  component: TaskComponent,\n  props: {\n    taks: taskData,\n    onPinTask: actionsData.onPinTask,\n    onArchiveTask: actionsData.onArchiveTask\n  }\n})"
+                "defaultValue": "() => ({\n  component: TaskComponent,\n  props: {\n    task: taskData,\n    onPinTask: actionsData.onPinTask,\n    onArchiveTask: actionsData.onArchiveTask\n  }\n})"
+            },
+            {
+                "name": "defaultRecipeData",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/recipe-editor/recipe-editor.stories.ts",
+                "type": "object",
+                "defaultValue": "{\n  \"id\": 100,\n  \"name\": \"Breakfast Stuffed Mushrooms\",\n  \"prep\": \"\",\n  \"cookTime\": \"\",\n  \"yield\": \"2 servings\",\n  \"description\":\n    \"These mushrooms can be assembled the night before and stored in the refrigerator overnight in the cooking pans. These are delicious with Parmesan or blue cheese melted over the top\",\n  \"recipeIngredient\": [\n    {\n      \"name\": \"Large white mushrooms, washed, stems removed and reserved\",\n      \"quantity\": 12,\n      \"unit\": \"Unit.Each\"\n    },\n    {\n      \"name\": \"avoacado oil\",\n      \"quantity\": 1,\n      \"unit\": \"Unit.Tablespoon\"\n    },\n    {\n      \"name\": \"kosher salt\",\n      \"quantity\": 0.25,\n      \"unit\": \"Unit.Teaspoon\"\n    },\n    {\n      \"name\":\"ground black pepper\",\n      \"quantity\": 0.25,\n      \"unit\": \"Unit.Teaspoon\"\n    },\n    {\n      \"name\": \"pork lard or fat of choice\",\n      \"quantity\": 1,\n      \"unit\": \"Unit.Tablespoon\"\n    },\n    {\n      \"name\": \"Sugar-free bulk pork breakfast sausage\",\n      \"quantity\": 6,\n      \"unit\": \"Unit.Oz\"\n    },\n    {\n      \"name\": \"clove garlic, minced\",\n      \"quantity\": 1,\n      \"unit\": \"Unit.Each\"\n    },\n    {\n      \"name\": \"Full-fat coconut milk, heavy whipping cream, or bone broth\",\n      \"quantity\": 0.25,\n      \"unit\": \"Unit.Cup\"\n    },\n    {\n      \"name\": \"finely chopped greens of your choosing (spinach, kale, Swiss chard, beet, turnigp\",\n      \"quantity\": 1,\n      \"unit\": \"Unit.Cup\"\n    },\n    {\n      \"name\": \"water\",\n      \"quantity\": 1,\n      \"unit\": \"Unit.Cup\"\n    }\n  ],\n  \"recipeInstructions\": [\n    \"1. Finely chop the mushroom stems and set aside. Place the mushroom caps stemmed side down in a medium bowl and pour the avocado oil over them. Season with the salt and pepper. Toss gently to coat the mushrooms with oil without breaking them.\",\n    \"2. Set the Instant Pot to Saute and melt the lard. When it is melted, crumble in the sausage and add the chopped mushroom stems. Saute, stirring occasionally, until only a little pink remains in the pork, 3 to 4 minutes. Add the garlic and saute until the pork is cooked through.\",\n    \"3. Deglaze the pot with the coconut milk, scraping the bottom with a wooden spoon to loosen any browned bits. Stif in the chopped greens and cook just until they are wilted.\",\n    \"4. Press Cancel. Transfer the pork to a bowl. Taste and adjust the salt and pepper. Wipe or wash out the pot insert.\",\n    \"5. Stuff the pork mixture into the mushrooms. Place the mushrooms stem side up in two stackable stainles steel insert pans, 6 mushrooms per pan. If you have extra pork filling, spoon it over the mushrooms. Stack and secure the lid on the pans.\",\n    \"6. Pour the water into the Instant Pot and lower the stacked pans into the pot. Secure the lid and turn the steam release valve to Sealing. Press the Steam button until High pressure is selected, then set the cook time to 12 minutes.\",\n    \"7. When the Instant Pot beeps, carefully swithc the steam release valve to Venting to quick-release the pressure. When fully released, open the lid and use the handle on the insert pans to lift them out (use potholders, it bill be hot). Open the insert pans and transfer the mushrooms to serving plates. Serve warm.\",\n    \"Notes: If you can't find sugar-free ground breakfast sausage, use ground pork and add 1 teaspoon kosher salt, 1/2 teaspoon dried sage, and 1/4 teaspoon each of dried thyme, smoke paprika, and ground black pepper; or you can substitute bulk Italian sausage or a variety of your choice.\",\n    \"You can layer mushrooms in any heatproof glass that fits the pot.\",\n    \"Steps 2 through 4 can be done in a skillet on the stovetop.\"\n  ],\n  \"nutrition\":{\n    \"calories\": 476 ,\n    \"fatContent\": 41,\n    \"protein\": 10,\n    \"carbs\": 14,\n    \"fiber\": 0\n  }\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: false\n}"
             },
             {
                 "name": "environment",
@@ -1383,12 +1674,12 @@
                 "defaultValue": "{\n  production: true\n}"
             },
             {
-                "name": "environment",
+                "name": "ingredientData",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.ts",
+                "file": "src/app/ingredient/ingredient.stories.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: false\n}"
+                "defaultValue": "{\n  name: 'Bok-Choy',\n  quantity: 1,\n  unit: Unit.Each\n}"
             },
             {
                 "name": "Large",
@@ -1519,7 +1810,26 @@
             }
         ],
         "functions": [],
-        "typealiases": [],
+        "typealiases": [
+            {
+                "name": "ChangeCallbackFn",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "function",
+                "file": "src/app/ingredient/ingredient.component.ts",
+                "description": "",
+                "kind": 162
+            },
+            {
+                "name": "TouchCallbackFn",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "function",
+                "file": "src/app/ingredient/ingredient.component.ts",
+                "description": "",
+                "kind": 162
+            }
+        ],
         "enumerations": [
             {
                 "name": "Unit",
@@ -1538,7 +1848,7 @@
                     },
                     {
                         "name": "Oz",
-                        "value": "Oz"
+                        "value": "Ounce"
                     },
                     {
                         "name": "Pound",
@@ -1554,11 +1864,11 @@
                     },
                     {
                         "name": "ToTaste",
-                        "value": "ToTaste"
+                        "value": "To Taste"
                     },
                     {
                         "name": "PerServing",
-                        "value": "PerServing"
+                        "value": "Per Serving"
                     }
                 ],
                 "ctype": "miscellaneous",
@@ -1591,7 +1901,7 @@
                     "subtype": "variable",
                     "file": "src/app/task/task.stories.ts",
                     "type": "",
-                    "defaultValue": "() => ({\n  component: TaskComponent,\n  props: {\n    taks: taskData,\n    onPinTask: actionsData.onPinTask,\n    onArchiveTask: actionsData.onArchiveTask\n  }\n})"
+                    "defaultValue": "() => ({\n  component: TaskComponent,\n  props: {\n    task: taskData,\n    onPinTask: actionsData.onPinTask,\n    onArchiveTask: actionsData.onArchiveTask\n  }\n})"
                 },
                 {
                     "name": "Pinned",
@@ -1627,14 +1937,40 @@
                     "type": "literal type"
                 }
             ],
-            "src/environments/environment.prod.ts": [
+            "src/app/ingredient/ingredient.stories.ts": [
                 {
-                    "name": "environment",
+                    "name": "Default",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/environments/environment.prod.ts",
+                    "file": "src/app/ingredient/ingredient.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  component: IngredientComponent,\n  props: {\n    model: object('model', { ...ingredientData })\n  }\n})"
+                },
+                {
+                    "name": "ingredientData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/ingredient/ingredient.stories.ts",
                     "type": "object",
-                    "defaultValue": "{\n  production: true\n}"
+                    "defaultValue": "{\n  name: 'Bok-Choy',\n  quantity: 1,\n  unit: Unit.Each\n}"
+                }
+            ],
+            "src/app/recipe-editor/recipe-editor.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/recipe-editor/recipe-editor.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  component: RecipeEditorComponent,\n  props: {\n    recipe: defaultRecipeData\n  }\n})"
+                },
+                {
+                    "name": "defaultRecipeData",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/recipe-editor/recipe-editor.stories.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  \"id\": 100,\n  \"name\": \"Breakfast Stuffed Mushrooms\",\n  \"prep\": \"\",\n  \"cookTime\": \"\",\n  \"yield\": \"2 servings\",\n  \"description\":\n    \"These mushrooms can be assembled the night before and stored in the refrigerator overnight in the cooking pans. These are delicious with Parmesan or blue cheese melted over the top\",\n  \"recipeIngredient\": [\n    {\n      \"name\": \"Large white mushrooms, washed, stems removed and reserved\",\n      \"quantity\": 12,\n      \"unit\": \"Unit.Each\"\n    },\n    {\n      \"name\": \"avoacado oil\",\n      \"quantity\": 1,\n      \"unit\": \"Unit.Tablespoon\"\n    },\n    {\n      \"name\": \"kosher salt\",\n      \"quantity\": 0.25,\n      \"unit\": \"Unit.Teaspoon\"\n    },\n    {\n      \"name\":\"ground black pepper\",\n      \"quantity\": 0.25,\n      \"unit\": \"Unit.Teaspoon\"\n    },\n    {\n      \"name\": \"pork lard or fat of choice\",\n      \"quantity\": 1,\n      \"unit\": \"Unit.Tablespoon\"\n    },\n    {\n      \"name\": \"Sugar-free bulk pork breakfast sausage\",\n      \"quantity\": 6,\n      \"unit\": \"Unit.Oz\"\n    },\n    {\n      \"name\": \"clove garlic, minced\",\n      \"quantity\": 1,\n      \"unit\": \"Unit.Each\"\n    },\n    {\n      \"name\": \"Full-fat coconut milk, heavy whipping cream, or bone broth\",\n      \"quantity\": 0.25,\n      \"unit\": \"Unit.Cup\"\n    },\n    {\n      \"name\": \"finely chopped greens of your choosing (spinach, kale, Swiss chard, beet, turnigp\",\n      \"quantity\": 1,\n      \"unit\": \"Unit.Cup\"\n    },\n    {\n      \"name\": \"water\",\n      \"quantity\": 1,\n      \"unit\": \"Unit.Cup\"\n    }\n  ],\n  \"recipeInstructions\": [\n    \"1. Finely chop the mushroom stems and set aside. Place the mushroom caps stemmed side down in a medium bowl and pour the avocado oil over them. Season with the salt and pepper. Toss gently to coat the mushrooms with oil without breaking them.\",\n    \"2. Set the Instant Pot to Saute and melt the lard. When it is melted, crumble in the sausage and add the chopped mushroom stems. Saute, stirring occasionally, until only a little pink remains in the pork, 3 to 4 minutes. Add the garlic and saute until the pork is cooked through.\",\n    \"3. Deglaze the pot with the coconut milk, scraping the bottom with a wooden spoon to loosen any browned bits. Stif in the chopped greens and cook just until they are wilted.\",\n    \"4. Press Cancel. Transfer the pork to a bowl. Taste and adjust the salt and pepper. Wipe or wash out the pot insert.\",\n    \"5. Stuff the pork mixture into the mushrooms. Place the mushrooms stem side up in two stackable stainles steel insert pans, 6 mushrooms per pan. If you have extra pork filling, spoon it over the mushrooms. Stack and secure the lid on the pans.\",\n    \"6. Pour the water into the Instant Pot and lower the stacked pans into the pot. Secure the lid and turn the steam release valve to Sealing. Press the Steam button until High pressure is selected, then set the cook time to 12 minutes.\",\n    \"7. When the Instant Pot beeps, carefully swithc the steam release valve to Venting to quick-release the pressure. When fully released, open the lid and use the handle on the insert pans to lift them out (use potholders, it bill be hot). Open the insert pans and transfer the mushrooms to serving plates. Serve warm.\",\n    \"Notes: If you can't find sugar-free ground breakfast sausage, use ground pork and add 1 teaspoon kosher salt, 1/2 teaspoon dried sage, and 1/4 teaspoon each of dried thyme, smoke paprika, and ground black pepper; or you can substitute bulk Italian sausage or a variety of your choice.\",\n    \"You can layer mushrooms in any heatproof glass that fits the pot.\",\n    \"Steps 2 through 4 can be done in a skillet on the stovetop.\"\n  ],\n  \"nutrition\":{\n    \"calories\": 476 ,\n    \"fatContent\": 41,\n    \"protein\": 10,\n    \"carbs\": 14,\n    \"fiber\": 0\n  }\n}"
                 }
             ],
             "src/environments/environment.ts": [
@@ -1645,6 +1981,16 @@
                     "file": "src/environments/environment.ts",
                     "type": "object",
                     "defaultValue": "{\n  production: false\n}"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true\n}"
                 }
             ],
             "src/stories/Button.stories.ts": [
@@ -1782,7 +2128,7 @@
                         },
                         {
                             "name": "Oz",
-                            "value": "Oz"
+                            "value": "Ounce"
                         },
                         {
                             "name": "Pound",
@@ -1798,11 +2144,11 @@
                         },
                         {
                             "name": "ToTaste",
-                            "value": "ToTaste"
+                            "value": "To Taste"
                         },
                         {
                             "name": "PerServing",
-                            "value": "PerServing"
+                            "value": "Per Serving"
                         }
                     ],
                     "ctype": "miscellaneous",
@@ -1812,7 +2158,28 @@
                 }
             ]
         },
-        "groupedTypeAliases": {}
+        "groupedTypeAliases": {
+            "src/app/ingredient/ingredient.component.ts": [
+                {
+                    "name": "ChangeCallbackFn",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "function",
+                    "file": "src/app/ingredient/ingredient.component.ts",
+                    "description": "",
+                    "kind": 162
+                },
+                {
+                    "name": "TouchCallbackFn",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "function",
+                    "file": "src/app/ingredient/ingredient.component.ts",
+                    "description": "",
+                    "kind": 162
+                }
+            ]
+        }
     },
     "routes": {
         "name": "<root>",
@@ -1840,6 +2207,10 @@
                     {
                         "path": "detail/:id",
                         "component": "RecipeDetailComponent"
+                    },
+                    {
+                        "path": "new",
+                        "component": "RecipeEditorComponent"
                     }
                 ],
                 "kind": "module"
@@ -1884,6 +2255,35 @@
                 "name": "Ingredient",
                 "coveragePercent": 0,
                 "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ingredient/ingredient.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "IngredientComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/13",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ingredient/ingredient.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/ingredient/ingredient.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ingredientData",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -1937,6 +2337,26 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "RecipeEditorComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/recipe-editor/recipe-editor.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/recipe-editor/recipe-editor.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "defaultRecipeData",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

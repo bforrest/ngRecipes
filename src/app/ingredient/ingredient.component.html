@@ -1,0 +1,17 @@
+<div [formGroup]="ingredientFormGroup">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" placeholder="Ingredient Name*" formControl="name">
+  </div>
+  <div class="form-group">
+    <label for="quantity">Quantity</label>
+    <input type="text" class="form-control" id="quantity" placeholder="Quantity*" formControl="quantity">
+  </div>
+<!--  <div class="form-group">-->
+<!--    <label for="unitType">Unit</label>-->
+<!--    <select class="form-control" id="unitType" formControl="unit">-->
+<!--      <option value="">Optional</option>-->
+<!--      <option *ngFor="let key of unitOptions" [ngValue]="key">{{unitType[key]}}</option>-->
+<!--    </select>-->
+<!--  </div>-->
+</div>

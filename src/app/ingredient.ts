@@ -8,11 +8,11 @@ export enum Unit {
   Cup ="cup",
   Each= "each",
   Clove = "clove",
-  Oz ="Oz",
+  Oz ="Ounce",
   Pound = "Pound",
   Teaspoon = "Teaspoon",
   Tablespoon = "Tablespoon",
-  ToTaste = "ToTaste",
-  PerServing = "PerServing"
+  ToTaste = "To Taste",
+  PerServing = "Per Serving"
 }
 

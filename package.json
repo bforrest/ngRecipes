@@ -13,7 +13,7 @@
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006",
     "build-storybook": "npm run docs:json && build-storybook",
-    "all" : "json-server db.json --routes routes.json && npm run storybook && npm serve --open"
+    "all": "json-server db.json --routes routes.json && npm run storybook && npm serve --open"
   },
   "jest": {
     "preset": "jest-preset-angular",
@@ -93,6 +93,7 @@
     "@compodoc/compodoc": "^1.1.11",
     "@storybook/addon-actions": "^6.0.26",
     "@storybook/addon-essentials": "^6.0.26",
+    "@storybook/addon-knobs": "^6.0.27",
     "@storybook/addon-links": "^6.0.26",
     "@storybook/addon-storyshots": "^6.0.26",
     "@storybook/angular": "^6.0.26",

@@ -1,73 +1,33 @@
-<!--&lt;!&ndash;<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">&ndash;&gt;-->
-<!--<form>-->
-<!--  <label>-->
-<!--    First Name:-->
-<!--    <input type="text" formControlName="firstName" required>-->
-<!--  </label>-->
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    Recipe Name:
+  </div>
+  <div class="panel-body">
 
-<!--  <label>-->
-<!--    Last Name:-->
-<!--    <input type="text" formControlName="lastName">-->
-<!--  </label>-->
+  </div>
+  <input value="{{recipe.name}}}" placeholder="Recipe Name*">
+</div>
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Ingredients</h3>
+  </div>
+  <div class="panel-body">
 
-<!--  <div formGroupName="address">-->
-<!--    <h3>Address</h3>-->
+  </div>
+</div>
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Instructions</h3>
+  </div>
+  <div class="panel-body">
 
-<!--    <label>-->
-<!--      Street:-->
-<!--      <input type="text" formControlName="street">-->
-<!--    </label>-->
+  </div>
+</div>
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title">Nutrition</h3>
+  </div>
+  <div class="panel-body">
 
-<!--    <label>-->
-<!--      City:-->
-<!--      <input type="text" formControlName="city">-->
-<!--    </label>-->
-
-<!--    <label>-->
-<!--      State:-->
-<!--      <input type="text" formControlName="state">-->
-<!--    </label>-->
-
-<!--    <label>-->
-<!--      Zip Code:-->
-<!--      <input type="text" formControlName="zip">-->
-<!--    </label>-->
-<!--  </div>-->
-
-<!--  <div formArrayName="aliases">-->
-<!--    <h3>Aliases</h3> <button (click)="addAlias()">Add Alias</button>-->
-
-<!--    <div *ngFor="let alias of aliases.controls; let i=index">-->
-<!--      &lt;!&ndash; The repeated alias template &ndash;&gt;-->
-<!--      <label>-->
-<!--        Alias:-->
-<!--        <input type="text" [formControlName]="i">-->
-<!--      </label>-->
-<!--    </div>-->
-<!--  </div>-->
-
-<!--  <button type="submit" [disabled]="!recipeForm.valid">Submit</button>-->
-<!--</form>-->
-
-<!--<hr>-->
-
-
-<!--<p>-->
-<!--&lt;!&ndash;  Form Value: {{ recipeForm.value | json }}&ndash;&gt;-->
-<!--</p>-->
-
-
-<!--<p>-->
-<!--&lt;!&ndash;  Form Status: {{ recipeForm.status }}&ndash;&gt;-->
-<!--</p>-->
-
-<!--<p>-->
-<!--&lt;!&ndash;  <button (click)="updateRecipe()">Update Profile</button>&ndash;&gt;-->
-<!--</p>-->
-
-
-<!--&lt;!&ndash;-->
-<!--Copyright Google LLC. All Rights Reserved.-->
-<!--Use of this source code is governed by an MIT-style license that-->
-<!--can be found in the LICENSE file at http://angular.io/license-->
-<!--&ndash;&gt;-->
+  </div>
+</div>
