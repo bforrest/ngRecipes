@@ -1,7 +1,7 @@
-export interface Ingredient{
-  name: string;
-  quantity?: number;
-  unit?: Unit;
+export class Ingredient{
+    public name: string;
+    public quantity?: number;
+    public unit?: Unit;
 }
 
 export enum Unit {

@@ -1,17 +1,70 @@
-<div [formGroup]="ingredientFormGroup">
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" placeholder="Ingredient Name*" formControl="name">
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Hero Form</h1>
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name"
+               required
+               [(ngModel)]="model.name" name="name"
+               #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="quantity">Alter Ego</label>
+        <input type="text" class="form-control" id="quantity"
+               [(ngModel)]="model.quantity" name="quantity">
+      </div>
+
+      <div class="form-group">
+        <label for="Unit">Hero Power</label>
+        <select class="form-control" id="Unit"
+                required
+                [(ngModel)]="model.unit " name="Unit"
+                #power="ngModel">
+          <option *ngFor="let key of keys" [value]="key">{{key}}</option>
+        </select>
+        <div [hidden]="power.valid || power.pristine" class="alert alert-danger">
+          Power is required
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
+      <button type="button" class="btn btn-default" (click)="newIngredient(); heroForm.reset()">New Ingredient</button>
+      <i>with</i> reset
+
+      &nbsp;&nbsp;
+      <button type="button" class="btn btn-default" (click)="newIngredient()">New Ingredient</button>
+      <i>without</i> reset
+
+      <!-- NOT SHOWN IN DOCS -->
+      <div>
+        <hr>
+        Name via form.controls = {{showFormControls(heroForm)}}
+      </div>
+      <!-- - -->
+    </form>
   </div>
-  <div class="form-group">
-    <label for="quantity">Quantity</label>
-    <input type="text" class="form-control" id="quantity" placeholder="Quantity*" formControl="quantity">
+
+  <div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+    <div class="row">
+      <div class="col-xs-3">Name</div>
+      <div class="col-xs-9">{{ model.name }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Quantity</div>
+      <div class="col-xs-9">{{ model.quantity }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Unit</div>
+      <div class="col-xs-9">{{ model.unit }}</div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
   </div>
-<!--  <div class="form-group">-->
-<!--    <label for="unitType">Unit</label>-->
-<!--    <select class="form-control" id="unitType" formControl="unit">-->
-<!--      <option value="">Optional</option>-->
-<!--      <option *ngFor="let key of unitOptions" [ngValue]="key">{{unitType[key]}}</option>-->
-<!--    </select>-->
-<!--  </div>-->
 </div>

@@ -743,7 +743,7 @@
         },
         {
             "name": "IngredientComponent",
-            "id": "component-IngredientComponent-a1a21f47b53e00e2d89ca8285ace3969",
+            "id": "component-IngredientComponent-809ead4f9760c3126a3110feda140b68",
             "file": "src/app/ingredient/ingredient.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -771,7 +771,7 @@
             "inputsClass": [
                 {
                     "name": "model",
-                    "line": 33,
+                    "line": 34,
                     "type": "Ingredient"
                 }
             ],
@@ -779,11 +779,19 @@
             "propertiesClass": [
                 {
                     "name": "ingredientFormGroup",
-                    "defaultValue": "this.fb.group({\n    name: ['', Validators.required],\n    quantity: [''],\n    unit: ['']\n})",
+                    "defaultValue": "this.fb.group({\n    name: ['', Validators.required],\n    quantity: [''],\n    unit: ['']\n  })",
                     "type": "FormGroup",
                     "optional": false,
                     "description": "",
-                    "line": 27
+                    "line": 28
+                },
+                {
+                    "name": "onTouched",
+                    "defaultValue": "() => {...}",
+                    "type": "function",
+                    "optional": false,
+                    "description": "",
+                    "line": 47
                 },
                 {
                     "name": "submitted",
@@ -791,7 +799,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 34
+                    "line": 35
                 },
                 {
                     "name": "unitOptions",
@@ -799,7 +807,7 @@
                     "type": "[]",
                     "optional": false,
                     "description": "",
-                    "line": 35
+                    "line": 36
                 },
                 {
                     "name": "unitType",
@@ -807,7 +815,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 37
+                    "line": 38
                 }
             ],
             "methodsClass": [
@@ -817,7 +825,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 46
+                    "line": 49
                 },
                 {
                     "name": "onSubmit",
@@ -825,32 +833,10 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 39
+                    "line": 40
                 },
                 {
                     "name": "registerOnChange",
-                    "args": [
-                        {
-                            "name": "fn",
-                            "type": "any"
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 50,
-                    "jsdoctags": [
-                        {
-                            "name": "fn",
-                            "type": "any",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "registerOnTouched",
                     "args": [
                         {
                             "name": "fn",
@@ -872,6 +858,50 @@
                     ]
                 },
                 {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "any"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 57,
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "any",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setDisabledState",
+                    "args": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 74,
+                    "jsdoctags": [
+                        {
+                            "name": "isDisabled",
+                            "type": "boolean",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "validate",
                     "args": [
                         {
@@ -882,7 +912,7 @@
                     "optional": false,
                     "returnType": "ValidationErrors | null",
                     "typeParameters": [],
-                    "line": 56,
+                    "line": 61,
                     "jsdoctags": [
                         {
                             "name": "control",
@@ -897,17 +927,17 @@
                     "name": "writeValue",
                     "args": [
                         {
-                            "name": "obj",
+                            "name": "val",
                             "type": "any"
                         }
                     ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 60,
+                    "line": 68,
                     "jsdoctags": [
                         {
-                            "name": "obj",
+                            "name": "val",
                             "type": "any",
                             "tagName": {
                                 "text": "param"
@@ -921,7 +951,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {Component, OnInit, Input, Output, EventEmitter, forwardRef} from '@angular/core';\nimport { AbstractControl, ControlValueAccessor, FormBuilder, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';\nimport {Ingredient, Unit} from \"../ingredient\";\n\ntype ChangeCallbackFn<T> = (value: T) => void;\ntype TouchCallbackFn = () => void;\n\n@Component({\n  selector: 'app-ingredient',\n  templateUrl: './ingredient.component.html',\n  styleUrls: ['./ingredient.component.css'],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef( () => IngredientComponent),\n      multi: true\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => IngredientComponent),\n      multi: true\n    }\n  ]\n})\n\nexport class IngredientComponent implements ControlValueAccessor, Validator, OnInit {\n  ingredientFormGroup: FormGroup = this.fb.group({\n    name: ['', Validators.required],\n    quantity: [''],\n    unit: ['']\n});\n\n  @Input() model: Ingredient;\n  submitted = false;\n  unitOptions = [];\n\n  unitType = Unit;\n\n  onSubmit() { this.submitted = true; }\n\n  // TODO: Remove this when we're done\n  get diagnostic() { return JSON.stringify(this.model); }\n\n  constructor(private fb: FormBuilder) { }\n\n  ngOnInit(): void {\n    this.unitOptions = Object.keys(this.unitType);\n  }\n\n  registerOnChange(fn: any): void {\n  }\n\n  registerOnTouched(fn: any): void {\n  }\n\n  validate(control: AbstractControl): ValidationErrors | null {\n    return undefined;\n  }\n\n  writeValue(obj: any): void {\n  }\n\n}\n",
+            "sourceCode": "import {Component, OnInit, Input, Output, EventEmitter, forwardRef} from '@angular/core';\nimport { AbstractControl, ControlValueAccessor, FormBuilder, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators,FormsModule,ReactiveFormsModule } from '@angular/forms';\nimport {Ingredient, Unit} from \"../ingredient\";\n\ntype ChangeCallbackFn<T> = (value: T) => void;\ntype TouchCallbackFn = () => void;\n\n@Component({\n  selector: 'app-ingredient',\n  templateUrl: './ingredient.component.html',\n  styleUrls: ['./ingredient.component.css'],\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef( () => IngredientComponent),\n      multi: true\n    },\n    {\n      provide: NG_VALIDATORS,\n      useExisting: forwardRef(() => IngredientComponent),\n      multi: true\n    }\n  ]\n})\n\nexport class IngredientComponent implements ControlValueAccessor, Validator, OnInit {\n\n  ingredientFormGroup: FormGroup = this.fb.group({\n    name: ['', Validators.required],\n    quantity: [''],\n    unit: ['']\n  });\n\n  @Input() model: Ingredient;\n  submitted = false;\n  unitOptions = [];\n\n  unitType = Unit;\n\n  onSubmit() { this.submitted = true; }\n\n  // TODO: Remove this when we're done\n  get diagnostic() { return JSON.stringify(this.model); }\n\n  constructor(private fb: FormBuilder) { }\n\n  onTouched: () => void = () => { };\n\n  ngOnInit(): void {\n    this.unitOptions = Object.keys(this.unitType);\n  }\n\n  registerOnChange(fn: any): void {\n    this.ingredientFormGroup.valueChanges.subscribe(fn);\n  }\n\n  registerOnTouched(fn: any): void {\n    this.onTouched = fn;\n  }\n\n  validate(control: AbstractControl): ValidationErrors | null {\n    if(this.ingredientFormGroup.valid) {\n      return null;\n    }\n    return { invalidForm: { valid: false, message: 'Ingredient fields are invalid.'}}\n  }\n\n  writeValue(val: any): void {\n    if(val) {\n      this.ingredientFormGroup.setValue(val, {emitEvent: false});\n    }\n  }\n\n  setDisabledState(isDisabled: boolean) {\n    if(isDisabled){\n      this.ingredientFormGroup.disable();\n    } else {\n      this.ingredientFormGroup.enable();\n    }\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -939,7 +969,7 @@
                         "type": "FormBuilder"
                     }
                 ],
-                "line": 42,
+                "line": 43,
                 "jsdoctags": [
                     {
                         "name": "fb",
@@ -962,11 +992,11 @@
                         "name": "diagnostic",
                         "type": "",
                         "returnType": "",
-                        "line": 42
+                        "line": 43
                     }
                 }
             },
-            "templateData": "<form>\n  <div class=\"form-group\">\n    <label for=\"name\">Name</label>\n    <input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"Ingredient Name*\" value=\"{{model.name}}\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"quantity\">Quantity</label>\n    <input type=\"text\" class=\"form-control\" id=\"quantity\" placeholder=\"Quantity*\" value=\"{{model.quantity}}\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"unitType\">Unit</label>\n    <select class=\"form-control\" id=\"unitType\" [(ngModel)]=\"model.unit\">\n      <option value=\"\">Optional</option>\n      <option *ngFor=\"let key of unitOptions\" [ngValue]=\"key\">{{unitType[key]}}</option>\n    </select>\n  </div>\n</form>\n"
+            "templateData": "<form [formGroup]=\"ingredientFormGroup\">\n  <div class=\"form-group\">\n    <label for=\"name\">Name</label>\n    <input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"Ingredient Name*\" formControl=\"name\">\n  </div>\n  <div class=\"form-group\">\n    <label for=\"quantity\">Quantity</label>\n    <input type=\"text\" class=\"form-control\" id=\"quantity\" placeholder=\"Quantity*\" formControl=\"quantity\">\n  </div>\n<!--  <div class=\"form-group\">-->\n<!--    <label for=\"unitType\">Unit</label>-->\n<!--    <select class=\"form-control\" id=\"unitType\" formControl=\"unit\">-->\n<!--      <option value=\"\">Optional</option>-->\n<!--      <option *ngFor=\"let key of unitOptions\" [ngValue]=\"key\">{{unitType[key]}}</option>-->\n<!--    </select>-->\n<!--  </div>-->\n</form>\n"
         },
         {
             "name": "MessagesComponent",
@@ -1631,7 +1661,7 @@
                 "subtype": "variable",
                 "file": "src/app/ingredient/ingredient.stories.ts",
                 "type": "",
-                "defaultValue": "() => ({\n  component: IngredientComponent,\n  props: {\n    model: object('model', { ...ingredientData })\n  }\n})"
+                "defaultValue": "() => ({\n  component: IngredientComponent,\n  // template: `\n  // <form><app-ingredient formControlName=\"ingredient\"></app-ingredient></form>`,\n  props: {\n    model: object('model', { ...ingredientData })\n  }\n})"
             },
             {
                 "name": "Default",
@@ -1661,17 +1691,17 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.ts",
+                "file": "src/environments/environment.prod.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: false\n}"
+                "defaultValue": "{\n  production: true\n}"
             },
             {
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.prod.ts",
+                "file": "src/environments/environment.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: true\n}"
+                "defaultValue": "{\n  production: false\n}"
             },
             {
                 "name": "ingredientData",
@@ -1944,7 +1974,7 @@
                     "subtype": "variable",
                     "file": "src/app/ingredient/ingredient.stories.ts",
                     "type": "",
-                    "defaultValue": "() => ({\n  component: IngredientComponent,\n  props: {\n    model: object('model', { ...ingredientData })\n  }\n})"
+                    "defaultValue": "() => ({\n  component: IngredientComponent,\n  // template: `\n  // <form><app-ingredient formControlName=\"ingredient\"></app-ingredient></form>`,\n  props: {\n    model: object('model', { ...ingredientData })\n  }\n})"
                 },
                 {
                     "name": "ingredientData",
@@ -1973,16 +2003,6 @@
                     "defaultValue": "{\n  \"id\": 100,\n  \"name\": \"Breakfast Stuffed Mushrooms\",\n  \"prep\": \"\",\n  \"cookTime\": \"\",\n  \"yield\": \"2 servings\",\n  \"description\":\n    \"These mushrooms can be assembled the night before and stored in the refrigerator overnight in the cooking pans. These are delicious with Parmesan or blue cheese melted over the top\",\n  \"recipeIngredient\": [\n    {\n      \"name\": \"Large white mushrooms, washed, stems removed and reserved\",\n      \"quantity\": 12,\n      \"unit\": \"Unit.Each\"\n    },\n    {\n      \"name\": \"avoacado oil\",\n      \"quantity\": 1,\n      \"unit\": \"Unit.Tablespoon\"\n    },\n    {\n      \"name\": \"kosher salt\",\n      \"quantity\": 0.25,\n      \"unit\": \"Unit.Teaspoon\"\n    },\n    {\n      \"name\":\"ground black pepper\",\n      \"quantity\": 0.25,\n      \"unit\": \"Unit.Teaspoon\"\n    },\n    {\n      \"name\": \"pork lard or fat of choice\",\n      \"quantity\": 1,\n      \"unit\": \"Unit.Tablespoon\"\n    },\n    {\n      \"name\": \"Sugar-free bulk pork breakfast sausage\",\n      \"quantity\": 6,\n      \"unit\": \"Unit.Oz\"\n    },\n    {\n      \"name\": \"clove garlic, minced\",\n      \"quantity\": 1,\n      \"unit\": \"Unit.Each\"\n    },\n    {\n      \"name\": \"Full-fat coconut milk, heavy whipping cream, or bone broth\",\n      \"quantity\": 0.25,\n      \"unit\": \"Unit.Cup\"\n    },\n    {\n      \"name\": \"finely chopped greens of your choosing (spinach, kale, Swiss chard, beet, turnigp\",\n      \"quantity\": 1,\n      \"unit\": \"Unit.Cup\"\n    },\n    {\n      \"name\": \"water\",\n      \"quantity\": 1,\n      \"unit\": \"Unit.Cup\"\n    }\n  ],\n  \"recipeInstructions\": [\n    \"1. Finely chop the mushroom stems and set aside. Place the mushroom caps stemmed side down in a medium bowl and pour the avocado oil over them. Season with the salt and pepper. Toss gently to coat the mushrooms with oil without breaking them.\",\n    \"2. Set the Instant Pot to Saute and melt the lard. When it is melted, crumble in the sausage and add the chopped mushroom stems. Saute, stirring occasionally, until only a little pink remains in the pork, 3 to 4 minutes. Add the garlic and saute until the pork is cooked through.\",\n    \"3. Deglaze the pot with the coconut milk, scraping the bottom with a wooden spoon to loosen any browned bits. Stif in the chopped greens and cook just until they are wilted.\",\n    \"4. Press Cancel. Transfer the pork to a bowl. Taste and adjust the salt and pepper. Wipe or wash out the pot insert.\",\n    \"5. Stuff the pork mixture into the mushrooms. Place the mushrooms stem side up in two stackable stainles steel insert pans, 6 mushrooms per pan. If you have extra pork filling, spoon it over the mushrooms. Stack and secure the lid on the pans.\",\n    \"6. Pour the water into the Instant Pot and lower the stacked pans into the pot. Secure the lid and turn the steam release valve to Sealing. Press the Steam button until High pressure is selected, then set the cook time to 12 minutes.\",\n    \"7. When the Instant Pot beeps, carefully swithc the steam release valve to Venting to quick-release the pressure. When fully released, open the lid and use the handle on the insert pans to lift them out (use potholders, it bill be hot). Open the insert pans and transfer the mushrooms to serving plates. Serve warm.\",\n    \"Notes: If you can't find sugar-free ground breakfast sausage, use ground pork and add 1 teaspoon kosher salt, 1/2 teaspoon dried sage, and 1/4 teaspoon each of dried thyme, smoke paprika, and ground black pepper; or you can substitute bulk Italian sausage or a variety of your choice.\",\n    \"You can layer mushrooms in any heatproof glass that fits the pot.\",\n    \"Steps 2 through 4 can be done in a skillet on the stovetop.\"\n  ],\n  \"nutrition\":{\n    \"calories\": 476 ,\n    \"fatContent\": 41,\n    \"protein\": 10,\n    \"carbs\": 14,\n    \"fiber\": 0\n  }\n}"
                 }
             ],
-            "src/environments/environment.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/environments/environment.ts",
-                    "type": "object",
-                    "defaultValue": "{\n  production: false\n}"
-                }
-            ],
             "src/environments/environment.prod.ts": [
                 {
                     "name": "environment",
@@ -1991,6 +2011,16 @@
                     "file": "src/environments/environment.prod.ts",
                     "type": "object",
                     "defaultValue": "{\n  production: true\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false\n}"
                 }
             ],
             "src/stories/Button.stories.ts": [
@@ -2263,7 +2293,7 @@
                 "linktype": "component",
                 "name": "IngredientComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/13",
+                "coverageCount": "0/15",
                 "status": "low"
             },
             {
