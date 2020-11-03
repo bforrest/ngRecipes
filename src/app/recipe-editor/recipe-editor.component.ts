@@ -45,8 +45,9 @@ export class RecipeEditorComponent implements OnInit  {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('the dialog was closed.');
-      console.log("result?", result);
+      console.log(result);
       this.fromForm = result;
+
       this.recipe.recipeIngredient.push(result);
     })
 

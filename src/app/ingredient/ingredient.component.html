@@ -1,7 +1,7 @@
 <div class="container">
   <div [hidden]="submitted">
     <h1>Ingredient</h1>
-    <form #ingredientForm="ngForm" (ngSubmit)="onSubmit(model)">
+    <form #ingredientForm="ngForm">
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name" name="name"
@@ -27,7 +27,7 @@
         </select>
       </div>
 
-      <button type="submit" class="btn btn-success" [disabled]="!ingredientForm.form.valid">Submit</button>
+      <button type="submit" class="btn btn-success" [disabled]="!ingredientForm.form.valid" [mat-dialog-close]="data">Submit</button>
       <button type="button" class="btn btn-default" (click)="ingredientForm.reset()">New Ingredient</button>
       <div>
         <hr>
