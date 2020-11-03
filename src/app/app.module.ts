@@ -15,6 +15,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { RecipeEditorComponent } from './recipe-editor/recipe-editor.component';
 import { TaskComponent } from './task/task.component';
 import { IngredientComponent } from './ingredient/ingredient.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -25,7 +27,7 @@ import { IngredientComponent } from './ingredient/ingredient.component';
     MessagesComponent,
     RecipeEditorComponent,
     TaskComponent,
-    IngredientComponent],
+    IngredientComponent,],
   imports: [
     BrowserModule,
     FormsModule,
@@ -33,8 +35,13 @@ import { IngredientComponent } from './ingredient/ingredient.component';
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
   ],
-  providers: [],
+  entryComponents: [
+    RecipeEditorComponent
+  ],
+  providers: [ {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
   bootstrap: [AppComponent],
 })
 
