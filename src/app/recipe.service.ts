@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable, of} from "rxjs";
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Recipe} from "./recipe";
+import {Recipe} from "./recipe";
 import {MessageService} from "./message.service";
 import {catchError, tap} from "rxjs/operators";
 
@@ -12,25 +12,24 @@ export class RecipeService {
 
   private recipesUrl = 'http://localhost:3000/api/recipes';  // URL to web api
 
-  getRecipes(): Observable<Recipe[]>{
+  getRecipes(): Observable<Recipe[]> {
     this.messageService.add('RecipeService: fetch Recipes');
 
     return this.http.get<Recipe[]>(this.recipesUrl)
       .pipe(
         tap(_ => this.log('fetched recipes')),
-      catchError(this.handleError<Recipe[]>('getRecipes', []))
+        catchError(this.handleError<Recipe[]>('getRecipes', []))
       );
   }
 
-  getRecipe(id: any): Observable<Recipe>{
+  getRecipe(id: any): Observable<Recipe> {
     const url = `${this.recipesUrl}/${id}`;
     this.messageService.add(`RecipeService: fethcing recipe id=${id}`);
     return this.http.get<Recipe>(url).pipe(
-      tap( _ => this.log(`fetched recipe id= ${id}`)),
+      tap(_ => this.log(`fetched recipe id= ${id}`)),
       catchError(this.handleError<Recipe>(`getRecipe id=${id}`))
     );
   }
-
 
 
   async addRecipe(recipe: Recipe) {
@@ -45,9 +44,9 @@ export class RecipeService {
     console.log(data);
     let reply = await this.http.post(this.recipesUrl, JSON.stringify(recipe), jsonOption)
       .pipe(
-        tap( _ => this.log(`posted recipe name= $recipe.name`)),
+        tap(_ => this.log(`posted recipe name= $recipe.name`)),
         catchError(this.handleError('add Recipe', recipe))
-      ).subscribe( response => console.log(response), err => console.log(err));
+      ).subscribe(response => console.log(response), err => console.log(err));
 
   }
 
@@ -62,8 +61,8 @@ export class RecipeService {
    * @param http
    * @param messageService
    */
-  private handleError<T>(operation = 'operation', result ?: T){
-    return(error: any): Observable<T> => {
+  private handleError<T>(operation = 'operation', result ?: T) {
+    return (error: any): Observable<T> => {
       // TODO: send error to remote logging.
       console.error(error);
 
@@ -77,5 +76,6 @@ export class RecipeService {
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService) {
+  }
 }

@@ -1,17 +1,57 @@
-<button (click)="goBack()">go back</button>
-<div *ngIf="recipe">
-  <h3>{{recipe.name}}</h3>
-  <h4>Ingredients</h4>
-  <li *ngFor="let item of recipe.recipeIngredient let i = index">
-    <span *ngIf="item?.quantity">
-      {{item.quantity}} - {{item.unit}}
-      </span>
-    {{item.name}}
+<div class="container">
+  <button (click)="goBack()">go back</button>
+  <div class="row">
+    <div *ngIf="recipe">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          {{recipe.name}}
+        </div>
+        <div class="panel-body">
+          <div class="panel panel-success">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Ingredients</div>
+            <div class="panel-body">
 
-  </li>
-  <h4>Directions</h4>
-  <li *ngFor="let item of recipe.recipeInstructions let i = index">
-    {{item}}
-  </li>
+            </div>
+            <ul class="list-group">
+              <li *ngFor="let item of recipe.recipeIngredient let i = index" class="list-group-item">
+                <span *ngIf="item?.quantity">{{item.quantity}} - {{item.unit}}</span>{{item.name}}
+              </li>
+            </ul>
+          </div>
+          <div class="panel panel-info">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Directions</div>
+            <div class="panel-body">
+
+            </div>
+            <!-- List group -->
+            <ul class="list-group">
+              <li *ngFor="let item of recipe.recipeInstructions let i = index" class="list-group-item">
+                {{item}}
+              </li>
+            </ul>
+          </div>
+          <div class="panel panel-warning">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Nutrition</div>
+            <div class="panel-body"></div>
+            <dl class="dl-horizontal">
+              <dt>Calories</dt>
+              <dd>{{recipe.nutrition.calories}}</dd>
+              <dt>Protein</dt>
+              <dd>{{recipe.nutrition.protein}}</dd>
+              <dt>Fat</dt>
+              <dd>{{recipe.nutrition.fatContent}}</dd>
+              <dt>Carbs</dt>
+              <dd>{{recipe.nutrition.carbs}}</dd>
+              <dt>Fiber</dt>
+              <dd>{{recipe.nutrition.fiber}}</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button (click)="goBack()">go back</button>
+  </div>
 </div>
-<button (click)="goBack()">go back</button>

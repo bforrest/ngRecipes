@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Recipe} from "../recipe";
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import {ActivatedRoute} from '@angular/router';
+import {Location} from '@angular/common';
 import {RecipeService} from "../recipe.service";
 
 @Component({
