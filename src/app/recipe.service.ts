@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from "rxjs";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Recipe} from "./recipe";
-import {RECIPES} from "./mock-recipes";
 import {MessageService} from "./message.service";
 import {catchError, tap} from "rxjs/operators";
 
@@ -12,7 +10,7 @@ import {catchError, tap} from "rxjs/operators";
 })
 export class RecipeService {
 
-  private recipesUrl = '//localhost:3000/api/recipes';  // URL to web api
+  private recipesUrl = 'http://localhost:3000/api/recipes';  // URL to web api
 
   getRecipes(): Observable<Recipe[]>{
     this.messageService.add('RecipeService: fetch Recipes');
@@ -24,14 +22,33 @@ export class RecipeService {
       );
   }
 
-  getRecipe(id: number): Observable<Recipe>{
+  getRecipe(id: any): Observable<Recipe>{
     const url = `${this.recipesUrl}/${id}`;
-
     this.messageService.add(`RecipeService: fethcing recipe id=${id}`);
     return this.http.get<Recipe>(url).pipe(
       tap( _ => this.log(`fetched recipe id= ${id}`)),
       catchError(this.handleError<Recipe>(`getRecipe id=${id}`))
     );
+  }
+
+
+
+  async addRecipe(recipe: Recipe) {
+    let data = JSON.stringify(recipe);
+    const jsonOption: { headers: HttpHeaders } = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    this.messageService.add(`RecipeService post: ${data}`);
+    console.log(data);
+    let reply = await this.http.post(this.recipesUrl, JSON.stringify(recipe), jsonOption)
+      .pipe(
+        tap( _ => this.log(`posted recipe name= $recipe.name`)),
+        catchError(this.handleError('add Recipe', recipe))
+      ).subscribe( response => console.log(response), err => console.log(err));
+
   }
 
   /** Log a RecipeService message with the MessageService */

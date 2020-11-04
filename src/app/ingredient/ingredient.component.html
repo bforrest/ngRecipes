@@ -28,7 +28,7 @@
       </div>
 
       <button type="submit" class="btn btn-success" [disabled]="!ingredientForm.form.valid" [mat-dialog-close]="data">Submit</button>
-      <button type="button" class="btn btn-default" (click)="ingredientForm.reset()">New Ingredient</button>
+      <button type="button" class="btn btn-default" (click)="ingredientForm.reset()">Clear</button>
       <div>
         <hr>
         Name via form.controls = {{showFormControls(ingredientForm)}}

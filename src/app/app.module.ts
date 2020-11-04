@@ -17,6 +17,7 @@ import { TaskComponent } from './task/task.component';
 import { IngredientComponent } from './ingredient/ingredient.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from "@angular/material/dialog";
+import { InstructionComponent } from './instruction/instruction.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from "@angular/material/dia
     MessagesComponent,
     RecipeEditorComponent,
     TaskComponent,
-    IngredientComponent,],
+    IngredientComponent,
+    InstructionComponent,],
   imports: [
     BrowserModule,
     FormsModule,

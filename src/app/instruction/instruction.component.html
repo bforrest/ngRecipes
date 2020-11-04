@@ -1,0 +1,18 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Instruction</h1>
+    <form #instructionForm="ngForm">
+      <div class="form-group">
+        <label for="instruction">Name</label>
+        <input type="text" class="form-control" id="instruction" name="instruction"
+               required
+               [(ngModel)]="data" #name="ngModel">
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Instruction is required
+        </div>
+      </div>
+    </form>
+    <button type="submit" class="btn btn-success" [disabled]="!instructionForm.form.valid" [mat-dialog-close]="data">Submit</button>
+    <button type="button" class="btn btn-default" (click)="instructionForm.reset()">Clear</button>
+  </div>
+</div>

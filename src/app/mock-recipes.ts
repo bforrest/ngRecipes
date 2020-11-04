@@ -3,7 +3,7 @@ import {Unit} from "./ingredient";
 
 export const RECIPES: Recipe[] =[
   {
-    id: 1,
+    id: "1",
     name: 'bacon and eggs ramen',
     prep: '5 minutes',
     cookTime: '20 minutes (not counting Zoodle and soft-boiled eggs)',
@@ -108,7 +108,7 @@ export const RECIPES: Recipe[] =[
     }
   },
   {
-    id: 2,
+    id: "2",
     name: 'florentine breakfast burgers',
     prep: '5 minutes',
     cookTime: '20 minutes (not counting english muffins)',

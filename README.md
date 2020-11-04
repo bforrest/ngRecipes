@@ -53,3 +53,15 @@ npm WARN @phenomnomnominal/tsquery@3.0.0 requires a peer of typescript@^3 but no
 npm WARN jest-preset-angular@7.1.1 requires a peer of jest@^24.1.0 but none is installed. You must install peer dependencies yourself.
 npm WARN ts-jest@24.3.0 requires a peer of jest@>=24 <25 but none is installed. You must install peer dependencies yourself.
 npm WARN @storybook/angular@6.0.26 requires a peer of typescript@^3.4.0 but none is installed. You must install peer dependencies yourself.
+
+
+## Playwright
+[Playwright](https://playwright.dev/#version=v1.4.2)
+npm i -D playwright
+
+[Playwright-cli](https://www.npmjs.com/package/playwright-cli)
+npm install -D playwright-cli
+
+## Generate Code
+
+npx playwright-cli codegen localhost:4200

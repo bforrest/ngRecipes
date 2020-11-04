@@ -12,18 +12,13 @@ import {Recipe} from "../recipe";
 
 export class IngredientComponent implements OnInit{
   model: Ingredient;
-  //ingredientForm;
   recipe: Recipe;
   keys = [];
   unitType = Unit;
 
   submitted = false;
 
-  onSubmit(ingredientData) {
-    // WTF do I do now?
-    this.submitted = true;
-    console.log("ingredient data?", ingredientData);
-
+  onSubmit() {
     this.dialogRef.close();
   }
 
@@ -40,7 +35,6 @@ export class IngredientComponent implements OnInit{
   constructor(
     public dialogRef: MatDialogRef<IngredientComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Ingredient,
-    //private formBuilder: FormBuilder,
   ){
     this.model = data;
     this.keys = Object.keys(Unit);

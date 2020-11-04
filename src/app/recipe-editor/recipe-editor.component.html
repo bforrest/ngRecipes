@@ -5,8 +5,16 @@
     Recipe Name:
   </div>
   <div class="panel-body">
-    <input value="{{recipe.name}}" placeholder="Recipe Name*">
-
+    <form #recipeName="ngForm">
+      <div class="form-group">
+      <label for="name">Name</label>
+      <input class="form-control" type="text" required id="name" name="name" placeholder="Recipe Name*"
+             [(ngModel)]="recipe.name" >
+      <div [hidden]="calories.valid || calories.pristine" class="alert alert-danger">
+        Recipe name is required
+      </div>
+      </div>
+    </form>
     <div class="panel panel-success">
       <div class="panel-heading">
         <h3 class="panel-title">Ingredients</h3>
@@ -42,8 +50,50 @@
         <h3 class="panel-title">Nutrition</h3>
       </div>
       <div class="panel-body">
-
+        <form #nutritionForm="ngForm">
+          <div class="form-group">
+            <label for="calories">Calories</label>
+            <input type="number" class="form-control" id="calories" name="calories" placeholder="Calories*"
+                   required
+                   [(ngModel)]="recipe.nutrition.calories" #calories="ngModel">
+            <div [hidden]="calories.valid || calories.pristine" class="alert alert-danger">
+              Calories is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="carbs">Carbs</label>
+            <input type="number" class="form-control" id="carbs" name="carbs" placeholder="Carbs*"
+                   required
+                   [(ngModel)]="recipe.nutrition.carbs" #carbs="ngModel">
+            <div [hidden]="carbs.valid || carbs.pristine" class="alert alert-danger">
+              Carbs is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fat">Fat</label>
+            <input type="number" class="form-control" id="fat" name="fat" placeholder="Fat*"
+                   required
+                   [(ngModel)]="recipe.nutrition.fatContent" #fat="ngModel">
+            <div [hidden]="fat.valid || fat.pristine" class="alert alert-danger">
+              Fat is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="protein">Protein</label>
+            <input type="number" class="form-control" id="protein" name="protein" placeholder="Protein*"
+                   required
+                   [(ngModel)]="recipe.nutrition.protein" #protein="ngModel">
+            <div [hidden]="protein.valid || protein.pristine" class="alert alert-danger">
+              Protein is required
+            </div>
+          </div>
+        </form>
       </div>
+    </div>
+    <div class="panel-footer">
+      <button type="button" class="btn btn-primary col-md-offset-10" [disabled]="!recipeName.form.valid ||!nutritionForm.form.valid "  (click)="saveRecipe()">
+        <span class="glyphicon glyphicon-save"> Save Recipe</span>
+      </button>
     </div>
   </div>
 </div>

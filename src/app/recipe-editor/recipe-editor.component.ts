@@ -6,6 +6,10 @@ import {MatDialog} from '@angular/material/dialog';
 import {Ingredient, Unit} from '../ingredient';
 import {Recipe} from "../recipe";
 import {IngredientComponent} from "../ingredient/ingredient.component";
+import {InstructionComponent} from "../instruction/instruction.component";
+import {Nutrition} from "../nutrition";
+import {RecipeService} from "../recipe.service";
+import {v4 as uuidv4} from 'uuid';
 
 @Component({
   selector: 'app-recipe-editor',
@@ -18,22 +22,12 @@ export class RecipeEditorComponent implements OnInit  {
   keys= Object.keys;
   recipe: Recipe;
   addedIngredient: Ingredient;
-  fromForm: Ingredient;
+  newInstruction: string;
 
-  // addIngredient(): void {
-  //   // Grab the ingredientForm values and push a new ingredient into the list.
-  //   // this.addedIngredient = new Ingredient();
-  // }
+  constructor(
+    public dialog: MatDialog,
+    private recipeService: RecipeService) {}
 
-
-  newIngredient(): void{
-    this.recipe.recipeIngredient.push(new Ingredient());
-  }
-  // getRecipe(): void {
-  //   this.recipeService.getRecipe(1).subscribe( result => this.recipe = result)
-  // }
-
-  constructor(public dialog: MatDialog,) {}
 
   addIngredient(): void {
     this.addedIngredient = new Ingredient();
@@ -46,18 +40,36 @@ export class RecipeEditorComponent implements OnInit  {
     dialogRef.afterClosed().subscribe(result => {
       console.log('the dialog was closed.');
       console.log(result);
-      this.fromForm = result;
-
       this.recipe.recipeIngredient.push(result);
     })
+  }
 
+  saveRecipe(): void{
+    // todo: save recipe
+    console.log('saving recipe name= ${recipe.name}');
+    let reply = this.recipeService.addRecipe(this.recipe).subscribe();
+    console.log(`reply: ${reply}`);
+  }
+  addInstruction(): void {
+    this.newInstruction = '';
+    const dialogRef = this.dialog.open(InstructionComponent, {
+      data: this.newInstruction,
+      width: 'auto',
+      height: '600px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('ta-done');
+      this.recipe.recipeInstructions.push(result);
+    })
   }
 
   ngOnInit(): void {
     this.recipe = new Recipe();
+    this.recipe.id = uuidv4();
     this.recipe.recipeIngredient = [];
     this.recipe.recipeInstructions = [];
-    //this.getRecipe();
+    this.recipe.nutrition = new Nutrition();
   }
 
   // TODO: Remove this when we're done

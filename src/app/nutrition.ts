@@ -1,7 +1,7 @@
-export interface Nutrition {
-  calories: number;
-  fatContent: number;
-  protein: number;
-  carbs: number;
-  fiber: number;
+export class Nutrition {
+  public calories: number;
+  public fatContent: number;
+  public protein: number;
+  public carbs: number;
+  public fiber: number;
 }
