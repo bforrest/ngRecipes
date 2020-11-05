@@ -10,9 +10,6 @@
           <div class="panel panel-success">
             <!-- Default panel contents -->
             <div class="panel-heading">Ingredients</div>
-            <div class="panel-body">
-
-            </div>
             <ul class="list-group">
               <li *ngFor="let item of recipe.recipeIngredient let i = index" class="list-group-item">
                 <span *ngIf="item?.quantity">{{item.quantity}} - {{item.unit}}</span>{{item.name}}
@@ -22,9 +19,6 @@
           <div class="panel panel-info">
             <!-- Default panel contents -->
             <div class="panel-heading">Directions</div>
-            <div class="panel-body">
-
-            </div>
             <!-- List group -->
             <ul class="list-group">
               <li *ngFor="let item of recipe.recipeInstructions let i = index" class="list-group-item">
@@ -35,7 +29,6 @@
           <div class="panel panel-warning">
             <!-- Default panel contents -->
             <div class="panel-heading">Nutrition</div>
-            <div class="panel-body"></div>
             <dl class="dl-horizontal">
               <dt>Calories</dt>
               <dd>{{recipe.nutrition.calories}}</dd>
@@ -49,6 +42,11 @@
               <dd>{{recipe.nutrition.fiber}}</dd>
             </dl>
           </div>
+        </div>
+        <div class="panel-footer">
+          <button (click)="deleteRecipe()" class="btn btn-danger col-md-offset-10" type="button">
+            <span class="glyphicon glyphicon-remove"></span> Delete Recipe
+          </button>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Recipe} from "../recipe";
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {RecipeService} from "../recipe.service";
 
@@ -16,6 +16,7 @@ export class RecipeDetailComponent implements OnInit {
   @Input() recipe: Recipe;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private recipeService: RecipeService,
     private location: Location) {
@@ -28,7 +29,10 @@ export class RecipeDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getRecipe();
   }
-
+  deleteRecipe(): void{
+    this.recipeService.delete(this.recipe);
+    this.router.navigate(['/dashboard']);
+  }
   getRecipe(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.recipeService.getRecipe(id)

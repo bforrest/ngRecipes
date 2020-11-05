@@ -1,7 +1,4 @@
 import {Component, OnInit, Input, Output, EventEmitter,Inject } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Validators } from '@angular/forms';
-import { FormArray } from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {Ingredient, Unit} from '../ingredient';
 import {Recipe} from "../recipe";
@@ -47,7 +44,7 @@ export class RecipeEditorComponent implements OnInit  {
   saveRecipe(): void{
     // todo: save recipe
     console.log('saving recipe name= ${recipe.name}');
-    let reply = this.recipeService.addRecipe(this.recipe).subscribe();
+    let reply = this.recipeService.addRecipe(this.recipe);
     console.log(`reply: ${reply}`);
   }
   addInstruction(): void {

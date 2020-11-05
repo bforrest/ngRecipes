@@ -31,7 +31,6 @@ export class RecipeService {
     );
   }
 
-
   async addRecipe(recipe: Recipe) {
     let data = JSON.stringify(recipe);
     const jsonOption: { headers: HttpHeaders } = {
@@ -46,10 +45,15 @@ export class RecipeService {
       .pipe(
         tap(_ => this.log(`posted recipe name= $recipe.name`)),
         catchError(this.handleError('add Recipe', recipe))
-      ).subscribe(response => console.log(response), err => console.log(err));
+      ).subscribe(response => console.log(response), err => console.error(err));
 
   }
 
+  delete(recipe: Recipe) {
+    this.messageService.add(`Deleting recipe ${recipe.name}`);
+    const url = `${this.recipesUrl}/${recipe.id}`;
+    this.http.delete(url).subscribe( response=> console.log(response), err => console.error(err));
+  }
   /** Log a RecipeService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`RecipeService: ${message}`);
