@@ -1,7 +1,7 @@
 <div class="container">
   <div [hidden]="submitted">
     <h1>Instruction</h1>
-    <form #instructionForm="ngForm">
+    <form #instructionForm="ngForm" (ngSubmit)="dialogRef.close(data)">
       <div class="form-group">
         <label for="instruction">Name</label>
         <input type="text" class="form-control" id="instruction" name="instruction"
@@ -12,7 +12,10 @@
         </div>
       </div>
     </form>
-    <button type="submit" class="btn btn-success" [disabled]="!instructionForm.form.valid" [mat-dialog-close]="data">Submit</button>
-    <button type="button" class="btn btn-default" (click)="instructionForm.reset()">Clear</button>
+    <mat-dialog-actions>
+      <button type="submit" class="btn btn-success" [disabled]="!instructionForm.form.valid" [mat-dialog-close]="data">Submit</button>
+      <button type="button" class="btn btn-default" (click)="instructionForm.reset()">Clear</button>
+    </mat-dialog-actions>
+
   </div>
 </div>

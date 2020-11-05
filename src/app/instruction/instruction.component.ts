@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog,MatDialogRef} from '@angular/material/dialog';
 import {Ingredient} from "../ingredient";
 
@@ -11,6 +11,11 @@ export class InstructionComponent implements OnInit {
 
   submitted = false;
 
+  @ViewChild("instruction") nameField: ElementRef;
+  editName(): void {
+    this.nameField.nativeElement.focus();
+  }
+
   constructor(
     public dialogRef: MatDialogRef<string>,
     @Inject(MAT_DIALOG_DATA) public data: string,
@@ -20,6 +25,7 @@ export class InstructionComponent implements OnInit {
   }
 
   onNoClick(): void {
+    this.data = ';'
     this.dialogRef.close();
   }
 }
