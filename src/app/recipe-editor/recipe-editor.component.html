@@ -8,12 +8,53 @@
         <form #recipeName="ngForm">
           <div class="form-group">
             <label for="name">Name</label>
-            <input [(ngModel)]="recipe.name" class="form-control" id="name" name="name" placeholder="Recipe Name*" required
+            <input [(ngModel)]="recipe.name" class="form-control" id="name" name="name" placeholder="Recipe Name*"
+                   required
                    type="text">
             <div [hidden]="calories.valid || calories.pristine" class="alert alert-danger">
               Recipe name is required
             </div>
           </div>
+
+          <div class="form-group">
+            <label for="yield">Yield (# Servings)</label>
+            <input #protein="ngModel" [(ngModel)]="recipe.nutrition.protein" class="form-control" id="yield"
+                   name="yield"
+                   placeholder="Yield (# servings)*"
+                   required type="number">
+            <div [hidden]="protein.valid || protein.pristine" class="alert alert-danger">
+              Yield is required
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="prep">Prep Time</label>
+            <input #protein="ngModel" [(ngModel)]="recipe.prep" class="form-control" id="prep" name="prep"
+                   placeholder="Prep Time*"
+                   type="text">
+          </div>
+
+
+          <div class="form-group">
+            <label for="cookTime">Cook Time</label>
+            <input #protein="ngModel" [(ngModel)]="recipe.nutrition.protein" class="form-control" id="cookTime"
+                   name="cookTime"
+                   placeholder="Cook Time*"
+                   required type="number">
+            <div [hidden]="protein.valid || protein.pristine" class="alert alert-danger">
+              Cook time is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input #protein="ngModel" [(ngModel)]="recipe.nutrition.protein" class="form-control" id="description"
+                   name="description"
+                   placeholder="Description"
+                   type="number">
+          </div>
+
         </form>
         <div class="panel panel-success">
           <div class="panel-heading">
@@ -59,7 +100,8 @@
             <form #nutritionForm="ngForm">
               <div class="form-group">
                 <label for="calories">Calories</label>
-                <input #calories="ngModel" [(ngModel)]="recipe.nutrition.calories" class="form-control" id="calories" name="calories"
+                <input #calories="ngModel" [(ngModel)]="recipe.nutrition.calories" class="form-control" id="calories"
+                       name="calories"
                        placeholder="Calories*"
                        required type="number">
                 <div [hidden]="calories.valid || calories.pristine" class="alert alert-danger">
@@ -68,7 +110,8 @@
               </div>
               <div class="form-group">
                 <label for="carbs">Carbs</label>
-                <input #carbs="ngModel" [(ngModel)]="recipe.nutrition.carbs" class="form-control" id="carbs" name="carbs"
+                <input #carbs="ngModel" [(ngModel)]="recipe.nutrition.carbs" class="form-control" id="carbs"
+                       name="carbs"
                        placeholder="Carbs*"
                        required type="number">
                 <div [hidden]="carbs.valid || carbs.pristine" class="alert alert-danger">
@@ -86,7 +129,8 @@
               </div>
               <div class="form-group">
                 <label for="protein">Protein</label>
-                <input #protein="ngModel" [(ngModel)]="recipe.nutrition.protein" class="form-control" id="protein" name="protein"
+                <input #protein="ngModel" [(ngModel)]="recipe.nutrition.protein" class="form-control" id="protein"
+                       name="protein"
                        placeholder="Protein*"
                        required type="number">
                 <div [hidden]="protein.valid || protein.pristine" class="alert alert-danger">
@@ -97,8 +141,9 @@
           </div>
         </div>
         <div class="panel-footer">
+          <button (click)="clear()" class="btn btn-danger">Clear</button>
           <button (click)="saveRecipe()" [disabled]="!recipeName.form.valid ||!nutritionForm.form.valid "
-                  class="btn btn-primary col-md-offset-10" type="button">
+                  class="btn btn-primary" type="submit">&nbsp;
             <span class="glyphicon glyphicon-save"> Save Recipe</span>
           </button>
         </div>

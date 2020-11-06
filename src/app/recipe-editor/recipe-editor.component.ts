@@ -41,6 +41,9 @@ export class RecipeEditorComponent implements OnInit  {
     })
   }
 
+  clear(): void{
+    this.ngOnInit();
+  }
   saveRecipe(): void{
     // todo: save recipe
     console.log('saving recipe name= ${recipe.name}');

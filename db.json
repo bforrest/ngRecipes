@@ -308,6 +308,59 @@
         "carbs": 14,
         "fiber": 0
       }
+    },
+    {
+      "id": "223e1289-fe15-47e1-bc89-371f59c96e58",
+      "recipeIngredient": [
+        {
+          "name": "avocado oil",
+          "quantity": "2",
+          "unit": "Teaspoon"
+        },
+        {
+          "name": "diced cooked ham",
+          "quantity": "4",
+          "unit": "Tablespoon"
+        },
+        {
+          "name": "shredded cheddar cheese",
+          "quantity": "6",
+          "unit": "Tablespoon"
+        },
+        {
+          "name": "Eggs",
+          "quantity": "4",
+          "unit": "Each"
+        },
+        {
+          "name": "Sour Cream or Cultured Cream",
+          "quantity": "2",
+          "unit": "Tablespoon"
+        },
+        {
+          "name": "water",
+          "quantity": "1",
+          "unit": "Cup"
+        }
+      ],
+      "recipeInstructions": [
+        "Grease the bottom and sides of four 6-ounce ramekins or silicone baking cups with the oil. Place 1 tablespoon each of bacon and shredded cheese into each ramekin. Press it gently into the bottom and create a small divot in the middle.",
+        "Carefully crack an egg into each ramekin without breaking the yolk. Do not stir. Dab the cultured cream evenly over the eggs and sprinkle each with ½ tablespoon of the remaining cheese. Cover loosely with foil or a silicone lid. ",
+        "Pour the water into the Instant Pot. Place the metal steam rack/trivet inside. Place the ramekins on the rack, stacking them if needed. Secure the lid and set the steam release valve to Sealing. Press the Pressure Cook or Manual button and set the cook time to 8 minutes (see Note). ",
+        "When the Instant Pot beeps, allow the pressure to release naturally for 1 minute, then carefully switch the steam release valve to Venting. When fully released, open the lid. Lift out the hot ramekins with tongs. Season with salt and pepper, and serve hot. ",
+        "NOTE: Cooked properly, these eggs en cocotte will have creamy but still runny yolks and whites that are just set. Of course, feel free to cook them longer if you want more well-done eggs. You might need to experiment a few times to find the cook time that you prefer. "
+      ],
+      "nutrition": {
+        "calories": 231,
+        "carbs": 1,
+        "fatContent": 19,
+        "protein": 13
+      },
+      "name": "Bacon & Cheese Eggs Encote",
+      "prep": "",
+      "cookTime": "",
+      "yield": "4 servings",
+      "description": "Eggs en cocotte are traditionally baked in a water bath in the oven, so they are perfectly suited to the steamy environment of the Instant Pot. Once you know the basic technique, there are almost endless possibilities for adapting this recipe with your favorite ingredients. The most classic of breakfast combos!"
     }
   ]
 }
