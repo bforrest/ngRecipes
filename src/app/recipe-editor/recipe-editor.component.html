@@ -18,7 +18,7 @@
 
           <div class="form-group">
             <label for="yield">Yield (# Servings)</label>
-            <input #protein="ngModel" [(ngModel)]="recipe.nutrition.protein" class="form-control" id="yield"
+            <input #protein="ngModel" [(ngModel)]="recipe.yield" class="form-control" id="yield"
                    name="yield"
                    placeholder="Yield (# servings)*"
                    required type="number">
@@ -38,7 +38,7 @@
 
           <div class="form-group">
             <label for="cookTime">Cook Time</label>
-            <input #protein="ngModel" [(ngModel)]="recipe.nutrition.protein" class="form-control" id="cookTime"
+            <input #protein="ngModel" [(ngModel)]="recipe.cookTime" class="form-control" id="cookTime"
                    name="cookTime"
                    placeholder="Cook Time*"
                    required type="number">
@@ -52,7 +52,7 @@
             <input #protein="ngModel" [(ngModel)]="recipe.nutrition.protein" class="form-control" id="description"
                    name="description"
                    placeholder="Description"
-                   type="number">
+                   type="text">
           </div>
 
         </form>
@@ -108,6 +108,17 @@
                   Calories is required
                 </div>
               </div>
+
+              <div class="form-group">
+                <label for="fat">Fat</label>
+                <input #fat="ngModel" [(ngModel)]="recipe.nutrition.fatContent" class="form-control" id="fat" name="fat"
+                       placeholder="Fat*"
+                       required type="number">
+                <div [hidden]="fat.valid || fat.pristine" class="alert alert-danger">
+                  Fat is required
+                </div>
+              </div>
+
               <div class="form-group">
                 <label for="carbs">Carbs</label>
                 <input #carbs="ngModel" [(ngModel)]="recipe.nutrition.carbs" class="form-control" id="carbs"
@@ -118,15 +129,7 @@
                   Carbs is required
                 </div>
               </div>
-              <div class="form-group">
-                <label for="fat">Fat</label>
-                <input #fat="ngModel" [(ngModel)]="recipe.nutrition.fatContent" class="form-control" id="fat" name="fat"
-                       placeholder="Fat*"
-                       required type="number">
-                <div [hidden]="fat.valid || fat.pristine" class="alert alert-danger">
-                  Fat is required
-                </div>
-              </div>
+
               <div class="form-group">
                 <label for="protein">Protein</label>
                 <input #protein="ngModel" [(ngModel)]="recipe.nutrition.protein" class="form-control" id="protein"

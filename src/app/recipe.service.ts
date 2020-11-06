@@ -24,7 +24,7 @@ export class RecipeService {
 
   getRecipe(id: any): Observable<Recipe> {
     const url = `${this.recipesUrl}/${id}`;
-    this.messageService.add(`RecipeService: fethcing recipe id=${id}`);
+    this.messageService.add(`RecipeService: fetching recipe id=${id}`);
     return this.http.get<Recipe>(url).pipe(
       tap(_ => this.log(`fetched recipe id= ${id}`)),
       catchError(this.handleError<Recipe>(`getRecipe id=${id}`))

@@ -7,6 +7,7 @@ import {InstructionComponent} from "../instruction/instruction.component";
 import {Nutrition} from "../nutrition";
 import {RecipeService} from "../recipe.service";
 import {v4 as uuidv4} from 'uuid';
+import {MessageService} from "../message.service";
 
 @Component({
   selector: 'app-recipe-editor',
@@ -23,7 +24,8 @@ export class RecipeEditorComponent implements OnInit  {
 
   constructor(
     public dialog: MatDialog,
-    private recipeService: RecipeService) {}
+    private recipeService: RecipeService,
+    public messageService: MessageService) {}
 
 
   addIngredient(): void {
@@ -49,7 +51,11 @@ export class RecipeEditorComponent implements OnInit  {
     console.log('saving recipe name= ${recipe.name}');
     let reply = this.recipeService.addRecipe(this.recipe);
     console.log(`reply: ${reply}`);
+    this.messageService.clear();
+    this.messageService.add(`Saved recipe ${this.recipe.name}`)
   }
+
+
   addInstruction(): void {
     this.newInstruction = '';
     const dialogRef = this.dialog.open(InstructionComponent, {

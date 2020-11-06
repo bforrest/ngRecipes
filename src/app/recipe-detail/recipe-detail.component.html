@@ -21,7 +21,7 @@
             <div class="panel-heading">Ingredients</div>
             <ul class="list-group">
               <li *ngFor="let item of recipe.recipeIngredient let i = index" class="list-group-item">
-                <span *ngIf="item?.quantity">{{item.quantity}} - {{item.unit}}</span>{{item.name}}
+                <span *ngIf="item?.quantity">{{item.quantity}} - {{item.unit}}</span> {{item.name}}
               </li>
             </ul>
           </div>
