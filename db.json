@@ -241,52 +241,52 @@
         {
           "name": "Large white mushrooms, washed, stems removed and reserved",
           "quantity": 12,
-          "unit": "Unit.Each"
+          "unit": "Each"
         },
         {
           "name": "avoacado oil",
           "quantity": 1,
-          "unit": "Unit.Tablespoon"
+          "unit": "Tablespoon"
         },
         {
           "name": "kosher salt",
           "quantity": 0.25,
-          "unit": "Unit.Teaspoon"
+          "unit": "Teaspoon"
         },
         {
           "name": "ground black pepper",
           "quantity": 0.25,
-          "unit": "Unit.Teaspoon"
+          "unit": "Teaspoon"
         },
         {
           "name": "pork lard or fat of choice",
           "quantity": 1,
-          "unit": "Unit.Tablespoon"
+          "unit": "Tablespoon"
         },
         {
           "name": "Sugar-free bulk pork breakfast sausage",
           "quantity": 6,
-          "unit": "Unit.Oz"
+          "unit": "Oz"
         },
         {
           "name": "clove garlic, minced",
           "quantity": 1,
-          "unit": "Unit.Each"
+          "unit": "Each"
         },
         {
           "name": "Full-fat coconut milk, heavy whipping cream, or bone broth",
           "quantity": 0.25,
-          "unit": "Unit.Cup"
+          "unit": "Cup"
         },
         {
           "name": "finely chopped greens of your choosing (spinach, kale, Swiss chard, beet, turnigp",
           "quantity": 1,
-          "unit": "Unit.Cup"
+          "unit": "Cup"
         },
         {
           "name": "water",
           "quantity": 1,
-          "unit": "Unit.Cup"
+          "unit": "Cup"
         }
       ],
       "recipeInstructions": [
