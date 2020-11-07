@@ -53,6 +53,8 @@ export class RecipeEditorComponent implements OnInit  {
     console.log(`reply: ${reply}`);
     this.messageService.clear();
     this.messageService.add(`Saved recipe ${this.recipe.name}`)
+    this.messageService.add(JSON.stringify(this.recipe));
+    this.ngOnInit();
   }
 
 

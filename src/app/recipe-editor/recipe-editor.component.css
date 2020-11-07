@@ -1,1 +1,12 @@
 @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+
+.cmd-buttons {
+  display: flex;
+  flex-basis: fit-content;
+  align-items: flex-end;
+}
+.cmd-buttons button{
+  margin: 5px;
+  padding: 5px;
+  align-self: flex-end;
+}
