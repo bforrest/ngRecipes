@@ -10,7 +10,7 @@ import {catchError, tap} from "rxjs/operators";
 })
 export class RecipeService {
 
-  private recipesUrl = 'http://localhost:3000/api/recipes';  // URL to web api
+  private recipesUrl = 'https://bf-keto.herokuapp.com/recipes';  // URL to web api
 
   getRecipes(): Observable<Recipe[]> {
     this.messageService.add('RecipeService: fetch Recipes');
